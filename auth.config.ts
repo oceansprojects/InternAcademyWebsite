@@ -14,23 +14,6 @@ export const authConfig = {
   providers: [],
 
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user;
-
-      if (nextUrl.pathname.startsWith("/student")) {
-        return isLoggedIn;
-      }
-
-      if (nextUrl.pathname.startsWith("/admin")) {
-        return (
-          isLoggedIn &&
-          (auth?.user.role === "admin" ||
-            auth?.user.role === "super_admin")
-        );
-      }
-
-      return true;
-    },
 
     async jwt({ token, user, account }) {
       if (account?.provider === "google" && user?.email) {

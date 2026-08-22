@@ -1,14 +1,10 @@
-import NextAuth from "next-auth";
-import { authConfig } from "@/auth.config";
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
 
-const { auth } = NextAuth(authConfig);
+export async function proxy(request: NextRequest) {
+  const { pathname } = request.nextUrl;
 
-export default auth((req) => {
-  const { pathname } = req.nextUrl;
-  const session = req.auth;
-
-  // ✅ Public routes
+  // 1. Allow public routes
   if (
     pathname === "/login" ||
     pathname === "/signup" ||
@@ -17,35 +13,55 @@ export default auth((req) => {
     return NextResponse.next();
   }
 
-  // Student routes
-  if (pathname.startsWith("/student")) {
-    if (!session) {
-      return NextResponse.redirect(new URL("/login", req.url));
-    }
+  // 2. Decode session token
+  const isSecure = request.nextUrl.protocol === "https:";
+  let token = await getToken({
+    req: request,
+    secret: process.env.AUTH_SECRET,
+    secureCookie: isSecure,
+  });
 
+  // Fallback for cookie name without prefix if secure flag differs
+  if (!token && isSecure) {
+    token = await getToken({
+      req: request,
+      secret: process.env.AUTH_SECRET,
+      secureCookie: false,
+    });
+  }
+
+  // 3. Student routes protection
+  if (pathname.startsWith("/student")) {
+    if (!token) {
+      const loginUrl = request.nextUrl.clone();
+      loginUrl.pathname = "/login";
+      return NextResponse.redirect(loginUrl);
+    }
     return NextResponse.next();
   }
 
-  // Admin routes
+  // 4. Admin routes protection
   if (pathname.startsWith("/admin")) {
-    if (!session) {
-      return NextResponse.redirect(
-        new URL("/admin/login", req.url)
-      );
+    if (!token) {
+      const adminLoginUrl = request.nextUrl.clone();
+      adminLoginUrl.pathname = "/admin/login";
+      return NextResponse.redirect(adminLoginUrl);
     }
 
-    if (
-      session.user.role !== "admin" &&
-      session.user.role !== "super_admin"
-    ) {
-      return NextResponse.redirect(new URL("/", req.url));
+    const role = (token as any).role;
+    if (role !== "admin" && role !== "super_admin") {
+      const homeUrl = request.nextUrl.clone();
+      homeUrl.pathname = "/";
+      return NextResponse.redirect(homeUrl);
     }
 
     return NextResponse.next();
   }
 
   return NextResponse.next();
-});
+}
+
+export default proxy;
 
 export const config = {
   matcher: [
@@ -53,3 +69,4 @@ export const config = {
     "/admin/:path*",
   ],
 };
+
