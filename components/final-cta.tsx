@@ -1,62 +1,60 @@
 import Image from "next/image"
 import { ArrowRight, CalendarCheck } from "lucide-react"
+import Link from "next/link"
 
 export function FinalCta() {
   return (
-    <section className="pt-28 pb-20 bg-white">
+    <section className="pt-14 sm:pt-20 pb-0 bg-white relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        
-        {/* Parent card container: overflow-visible (no overflow-hidden) to let the image stick out */}
-        <div className="relative rounded-[2.5rem] border border-neutral-200/70 bg-gradient-to-br from-white to-slate-50/50 shadow-[0_20px_50px_rgba(0,0,0,0.05)] px-6 py-12 md:py-16 md:px-16 flex flex-col md:flex-row items-center min-h-[340px]">
-          
-          {/* Decorative glows */}
-          <div className="absolute -left-20 top-0 h-64 w-64 rounded-full bg-[#004aad]/5 blur-3xl pointer-events-none" />
-          <div className="absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-[#00d2fd]/5 blur-3xl pointer-events-none" />
+        <div className="relative rounded-t-3xl sm:rounded-t-[2.5rem] rounded-b-2xl md:rounded-b-none border-t border-x md:border-b-0 border-slate-200/90 bg-gradient-to-br from-white via-slate-50/50 to-slate-100/50 shadow-[0_16px_40px_rgba(0,0,0,0.04)] px-6 sm:px-10 lg:px-14 pt-8 sm:pt-10 lg:pt-12 pb-0 flex flex-col-reverse md:flex-row items-center md:items-end justify-between gap-8 md:gap-12">
 
-          {/* Left Column: Image wrapper sticking out of the top of the div */}
-          <div className="relative w-full md:w-[38%] flex justify-center md:block h-auto">
-            <div className="md:absolute md:-bottom-16 md:-top-32 md:left-0 md:w-full">
-              <Image
-                src="/images/counselling.png"
-                alt="Free counseling session"
-                width={480}
-                height={560}
-                priority
-                className="w-auto h-[300px] sm:h-[280px] md:h-[400px] object-contain object-bottom drop-shadow-2xl transition-transform duration-500 hover:scale-105"
-              />
-            </div>
+          {/* Decorative glows */}
+          <div className="absolute -left-16 top-0 size-60 rounded-full bg-[#004aad]/5 blur-3xl pointer-events-none" />
+          <div className="absolute -right-16 bottom-0 size-60 rounded-full bg-[#00d2fd]/10 blur-3xl pointer-events-none" />
+
+          {/* Left Column: Image anchored directly to the bottom line of the footer */}
+          <div className="relative w-full md:w-[42%] flex items-end justify-center shrink-0 self-end -mb-0">
+            <Image
+              src="/images/counselling.png"
+              alt="Free counseling session"
+              width={480}
+              height={560}
+              priority
+              className="w-auto h-[260px] sm:h-[320px] md:h-[380px] lg:h-[420px] object-contain object-bottom drop-shadow-xl transition-transform duration-500 hover:scale-[1.02] block align-bottom"
+            />
           </div>
 
-          {/* Right Column: Heading & Text shifted to the right */}
-          <div className="relative z-10 w-full md:w-[62%] text-center md:text-left flex flex-col items-center md:items-start">
-            <h2 className="font-montserrat text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl lg:text-[42px] leading-tight">
+          {/* Right Column: Heading & Buttons */}
+          <div className="relative z-10 w-full md:w-[58%] text-center md:text-left flex flex-col items-center md:items-start pb-6 md:pb-12 lg:pb-14">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#00aeef]">
+              Get In Touch
+            </span>
+            <h2 className="mt-1.5 font-montserrat text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
               Your career starts with one decision
             </h2>
-            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-neutral-500 font-medium">
-              Book a free counseling call and we&apos;ll map the right program and
-              internship path for your goals.
+            <p className="mt-3 max-w-xl text-xs sm:text-sm md:text-base leading-relaxed text-slate-600 font-medium">
+              Book a free counseling call and we&apos;ll map the right program and internship path tailored for your career goals.
             </p>
-            
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <a
-                href="#"
-                className="flex items-center justify-center gap-2 rounded-full bg-[#004aad] px-8 py-3.5 text-sm font-bold text-white shadow-md transition-all duration-300 hover:bg-[#003c8f] hover:shadow-lg active:scale-95"
+
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3.5 sm:gap-4 w-full sm:w-auto">
+              <Link
+                href="/courses"
+                className="flex items-center justify-center gap-2 rounded-full bg-[#004aad] px-7 py-3 text-xs sm:text-sm font-bold text-white shadow-md transition-all duration-300 hover:bg-[#003087] hover:shadow-lg active:scale-95"
               >
-                Get started free
+                <span>Explore Programs</span>
                 <ArrowRight className="size-4" />
-              </a>
+              </Link>
               <a
-                href="#"
-                className="flex items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-8 py-3.5 text-sm font-bold text-neutral-800 shadow-sm transition-all duration-300 hover:bg-neutral-50 hover:border-neutral-400"
+                href="#contact"
+                className="flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-7 py-3 text-xs sm:text-sm font-bold text-slate-800 shadow-sm transition-all duration-300 hover:bg-slate-50 hover:border-slate-400 active:scale-95"
               >
-                <CalendarCheck className="size-4" />
-                Book counseling
+                <CalendarCheck className="size-4 text-[#004aad]" />
+                <span>Contact Counseling</span>
               </a>
             </div>
           </div>
 
         </div>
-
       </div>
     </section>
   )

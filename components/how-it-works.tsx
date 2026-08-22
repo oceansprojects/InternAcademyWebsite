@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect, useCallback } from "react"
 import { motion, useSpring, useScroll, useTransform } from "framer-motion"
-import { Sparkles } from "lucide-react"
 
 function IALogo({ size = 20 }: { color?: string; size?: number }) {
   return (
@@ -44,19 +43,17 @@ const steps = [
   },
 ]
 
-// ── Image Scenes using Local Images (with fallback) ──────────────────────────
-// Note: We use local routes for generated assets. Copying the generated assets
-// to public/images/ will show the custom images. Unsplash is used as fallback.
+// ── Image Scenes ────────────────────────────────────────────────────────────
 function EnrollScene() {
   return (
-    <div className="w-full h-full flex items-center justify-center p-6 bg-white">
+    <div className="w-full h-full flex items-center justify-center p-4 sm:p-6 bg-white">
       <img
         src="/images/carrer/stage1.png"
         onError={(e) => {
           e.currentTarget.src = "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80"
         }}
         alt="Enroll & Join a Cohort"
-        className="max-w-full max-h-[85%] object-contain rounded-2xl shadow-md border border-slate-100"
+        className="max-w-full max-h-[85%] object-contain rounded-2xl shadow-sm border border-slate-100"
       />
     </div>
   )
@@ -64,14 +61,14 @@ function EnrollScene() {
 
 function LearnScene() {
   return (
-    <div className="w-full h-full flex items-center justify-center p-6 bg-white">
+    <div className="w-full h-full flex items-center justify-center p-4 sm:p-6 bg-white">
       <img
         src="/images/carrer/stage2.png"
         onError={(e) => {
           e.currentTarget.src = "https://images.unsplash.com/photo-1531497865144-0464ef8fb9a9?auto=format&fit=crop&w=800&q=80"
         }}
         alt="Learn by Building"
-        className="max-w-full max-h-[85%] object-contain rounded-2xl shadow-md border border-slate-100"
+        className="max-w-full max-h-[85%] object-contain rounded-2xl shadow-sm border border-slate-100"
       />
     </div>
   )
@@ -79,14 +76,14 @@ function LearnScene() {
 
 function InternshipScene() {
   return (
-    <div className="w-full h-full flex items-center justify-center p-6 bg-white">
+    <div className="w-full h-full flex items-center justify-center p-4 sm:p-6 bg-white">
       <img
         src="/images/carrer/stage3.png"
         onError={(e) => {
           e.currentTarget.src = "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80"
         }}
         alt="Land an Internship"
-        className="max-w-full max-h-[85%] object-contain rounded-2xl shadow-md border border-slate-100"
+        className="max-w-full max-h-[85%] object-contain rounded-2xl shadow-sm border border-slate-100"
       />
     </div>
   )
@@ -94,14 +91,14 @@ function InternshipScene() {
 
 function CertificateScene() {
   return (
-    <div className="w-full h-full flex items-center justify-center p-6 bg-white">
+    <div className="w-full h-full flex items-center justify-center p-4 sm:p-6 bg-white">
       <img
         src="/images/carrer/stage4.png"
         onError={(e) => {
           e.currentTarget.src = "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80"
         }}
         alt="Earn a Verified Certificate"
-        className="max-w-full max-h-[85%] object-contain rounded-2xl shadow-md border border-slate-100"
+        className="max-w-full max-h-[85%] object-contain rounded-2xl shadow-sm border border-slate-100"
       />
     </div>
   )
@@ -110,35 +107,26 @@ function CertificateScene() {
 const SCENES = [EnrollScene, LearnScene, InternshipScene, CertificateScene]
 const SCENE_COUNT = 4
 
-// ── MAIN ──────────────────────────────────────────────────────────────────────
 export function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0)
   const leftRef = useRef<HTMLDivElement>(null)
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const interactiveBodyRef = useRef<HTMLDivElement>(null)
 
-  // useScroll binds directly to the scroll container's raw scroll position
   const { scrollYProgress } = useScroll({
     container: leftRef
   })
 
-  // useSpring smooths the raw scroll value for organic, inertia-rich animations
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 75,
     damping: 24,
     restDelta: 0.001
   })
 
-  // Float target positions for logo: mapped to land directly on key parts of the images
   const logoX = useTransform(smoothProgress, [0, 0.33, 0.66, 1.0], ["74%", "62%", "48%", "34%"])
   const logoY = useTransform(smoothProgress, [0, 0.33, 0.66, 1.0], ["46%", "65%", "52%", "58%"])
-
-  // Smooth floating logo visual colors and themes
-  const logoColor = useTransform(smoothProgress, [0, 0.33, 0.66, 1.0], ["#0ea5e9", "#a855f7", "#16a34a", "#d97706"])
-  const logoBg = useTransform(smoothProgress, [0, 0.33, 0.66, 1.0], ["rgba(14,165,233,0.06)", "rgba(168,85,247,0.06)", "rgba(22,163,74,0.06)", "rgba(217,119,6,0.06)"])
   const logoBorder = useTransform(smoothProgress, [0, 0.33, 0.66, 1.0], ["rgba(14,165,233,0.28)", "rgba(168,85,247,0.28)", "rgba(22,163,74,0.28)", "rgba(217,119,6,0.28)"])
   const scrollbarColor = useTransform(smoothProgress, [0, 0.33, 0.66, 1.0], ["#0ea5e9", "#a855f7", "#16a34a", "#d97706"])
 
-  // Wheel hijack: redirect page scroll into the left column
   const handleWheel = useCallback((e: WheelEvent) => {
     const el = leftRef.current
     if (!el) return
@@ -151,10 +139,10 @@ export function HowItWorks() {
   }, [])
 
   useEffect(() => {
-    const sec = sectionRef.current
-    if (!sec) return
-    sec.addEventListener("wheel", handleWheel, { passive: false })
-    return () => sec.removeEventListener("wheel", handleWheel)
+    const bodyEl = interactiveBodyRef.current
+    if (!bodyEl) return
+    bodyEl.addEventListener("wheel", handleWheel, { passive: false })
+    return () => bodyEl.removeEventListener("wheel", handleWheel)
   }, [handleWheel])
 
   const handleScroll = useCallback(() => {
@@ -177,29 +165,44 @@ export function HowItWorks() {
   return (
     <section
       id="how"
-      ref={sectionRef}
-      className="scroll-mt-20 bg-white text-slate-900 border-t border-slate-100 overflow-hidden"
+      className="scroll-mt-24 bg-white text-slate-900 border-t border-slate-200/80 overflow-hidden"
     >
-      {/* ── DESKTOP ───────────────────────────────────────────────────────── */}
-      <div className="hidden lg:flex w-full h-screen max-h-screen">
+      {/* ── Section Header ── */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-6 sm:pb-8">
+        <div className="flex flex-col sm:flex-row items-center sm:items-end justify-between gap-4 text-center sm:text-left">
+          <div>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e0f2fe] px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#004aad]">
+              How It Works
+            </span>
+            <h2 className="mt-2.5 font-montserrat text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#004aad]">
+              From Classroom to Career
+            </h2>
+            <p className="mt-1.5 text-xs sm:text-sm md:text-base font-medium text-slate-600 max-w-xl">
+              A structured 4-step pipeline designed to take you from core concepts to a verified tech internship.
+            </p>
+          </div>
 
-        {/* LEFT — scrollable container, hidden scrollbar */}
+          <div className="hidden sm:flex items-center gap-2 text-xs font-bold text-[#004aad] bg-slate-50 border border-slate-200 px-4 py-2 rounded-full">
+            <span className="inline-block size-2 rounded-full bg-emerald-500 animate-pulse" />
+            4-Stage Pathway
+          </div>
+        </div>
+      </div>
+
+      {/* ── DESKTOP VIEW ── */}
+      <div
+        ref={interactiveBodyRef}
+        className="hidden lg:flex w-full h-screen max-h-screen border-t border-slate-100"
+      >
+        {/* LEFT — scrollable container */}
         <div
           ref={leftRef}
           onScroll={handleScroll}
           className="relative w-[55%] h-screen overflow-y-scroll"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
         >
-          {/* Hide webkit scrollbar */}
-          <style>{`
-            #hiw-left::-webkit-scrollbar { display: none; }
-          `}</style>
-
-          {/* Tall scroll spacer — 4 steps = 400vh */}
           <div style={{ height: `${SCENE_COUNT * 100}vh` }}>
-            {/* Sticky scene frame */}
             <div className="sticky top-0 h-screen w-full flex items-center justify-center">
-
               {/* Ambient tint background */}
               <motion.div
                 className="absolute inset-0 pointer-events-none"
@@ -218,17 +221,16 @@ export function HowItWorks() {
                 style={{ backgroundImage: "radial-gradient(circle, #334155 1px, transparent 1px)", backgroundSize: "26px 26px" }} />
 
               {/* Sticky Card Frame */}
-              <div className="relative w-[88%] h-[84%] rounded-[2.5rem] border border-slate-200 bg-white/90 backdrop-blur-sm shadow-[0_2px_28px_rgba(0,0,0,0.07)] flex items-center justify-center overflow-hidden">
-                {/* Top accent bar */}
+              <div className="relative w-[88%] h-[84%] rounded-[2.5rem] border border-slate-200 bg-white/90 backdrop-blur-sm shadow-[0_4px_30px_rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden">
                 <motion.div
                   className="absolute top-0 left-0 right-0 h-[3px] rounded-t-[2.5rem]"
                   animate={{ backgroundColor: step.color }}
                   transition={{ duration: 0.4 }}
                 />
 
-                {/* ── Continuous Floating Logo — AirPods-style ── */}
+                {/* Floating Logo */}
                 <motion.div
-                  className="absolute z-20 pointer-events-none w-16 h-16 -ml-8 -mt-8"
+                  className="absolute z-20 pointer-events-none w-14 h-14 -ml-7 -mt-7"
                   style={{
                     left: logoX,
                     top: logoY,
@@ -241,14 +243,13 @@ export function HowItWorks() {
                       borderColor: logoBorder,
                     }}
                   >
-                    <IALogo size={44} />
+                    <IALogo size={36} />
                   </motion.div>
                 </motion.div>
 
-                {/* ── Apple-style Stacking Scenes ── */}
-                <div className="absolute inset-0 flex items-center justify-center p-8">
+                {/* Scenes */}
+                <div className="absolute inset-0 flex items-center justify-center p-6 xl:p-8">
                   {SCENES.map((Scene, idx) => {
-                    // Mapped transforms: smooth transition based on continuous spring progress
                     const opacity = useTransform(
                       smoothProgress,
                       idx === 0
@@ -285,31 +286,12 @@ export function HowItWorks() {
                         : [40, 0, 0]
                     )
 
-                    const scale = useTransform(
-                      smoothProgress,
-                      idx === 0
-                        ? [0, 0.22, 0.28]
-                        : idx === 1
-                        ? [0.2, 0.28, 0.55, 0.62]
-                        : idx === 2
-                        ? [0.5, 0.62, 0.88, 0.95]
-                        : [0.8, 0.95, 1.0],
-                      idx === 0
-                        ? [1, 1, 0.95]
-                        : idx === 1
-                        ? [0.95, 1, 1, 0.95]
-                        : idx === 2
-                        ? [0.95, 1, 1, 0.95]
-                        : [0.95, 1, 1]
-                    )
-
                     return (
                       <motion.div
                         key={idx}
                         style={{
                           opacity,
                           y: translateY,
-                          scale,
                           pointerEvents: activeStep === idx ? "auto" : "none",
                         }}
                         className="absolute inset-0 flex items-center justify-center bg-white"
@@ -349,55 +331,38 @@ export function HowItWorks() {
         </div>
 
         {/* RIGHT — sticky timeline description panel */}
-        <div className="w-[45%] h-screen sticky top-0 flex flex-col justify-center px-10 xl:px-12 border-l border-slate-100 bg-white overflow-hidden">
-
-          {/* Right ambient glow */}
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            animate={{
-              background:
-                activeStep === 0 ? "radial-gradient(circle at 72% 30%, rgba(14,165,233,0.055) 0%, transparent 58%)"
-                : activeStep === 1 ? "radial-gradient(circle at 68% 46%, rgba(168,85,247,0.055) 0%, transparent 58%)"
-                : activeStep === 2 ? "radial-gradient(circle at 72% 56%, rgba(22,163,74,0.055) 0%, transparent 58%)"
-                : "radial-gradient(circle at 70% 36%, rgba(217,119,6,0.055) 0%, transparent 58%)"
-            }}
-            transition={{ duration: 0.65 }}
-          />
-
-          {/* Heading */}
+        <div className="w-[45%] h-screen sticky top-0 flex flex-col justify-center px-8 xl:px-12 border-l border-slate-100 bg-white overflow-hidden">
           <div className="mb-8 relative z-10">
             <motion.span
-              className="text-[11px] font-bold uppercase tracking-widest"
+              className="text-xs font-bold uppercase tracking-widest"
               animate={{ color: step.color }}
               transition={{ duration: 0.4 }}
             >
-              About how it works
+              Step 0{activeStep + 1} of 04
             </motion.span>
-            <h2 className="mt-1.5 font-montserrat text-[2rem] font-extrabold tracking-tight text-slate-900 leading-tight">
-              From classroom to career
+            <h2 className="mt-1.5 font-montserrat text-3xl xl:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+              {step.title}
               <br />
               <motion.span
                 className="bg-clip-text text-transparent"
                 animate={{ backgroundImage: `linear-gradient(to right, ${step.color}, #475569)` }}
                 transition={{ duration: 0.4 }}
               >
-                in four steps
+                {step.tagline}
               </motion.span>
             </h2>
           </div>
 
-          {/* Timeline list */}
           <div className="relative z-10" style={{ borderLeft: "2px solid #f1f5f9" }}>
             {steps.map((s, idx) => {
               const isActive = activeStep === idx
               return (
                 <div
                   key={s.title}
-                  className="relative pl-7 cursor-pointer"
-                  style={{ paddingBottom: idx < steps.length - 1 ? "1.6rem" : 0 }}
+                  className="relative pl-6 xl:pl-7 cursor-pointer"
+                  style={{ paddingBottom: idx < steps.length - 1 ? "1.5rem" : 0 }}
                   onClick={() => scrollToStep(idx)}
                 >
-                  {/* Timeline bullet dot */}
                   <div className="absolute -left-[9px] top-[3px]">
                     <motion.div
                       animate={{
@@ -410,24 +375,13 @@ export function HowItWorks() {
                     />
                   </div>
 
-                  {/* Vertical active trace connector */}
-                  {isActive && idx < steps.length - 1 && (
-                    <motion.div
-                      className="absolute rounded-full"
-                      style={{ left: -2, top: 14, width: 2, backgroundColor: s.color, opacity: 0.22 }}
-                      initial={{ height: 0 }}
-                      animate={{ height: "calc(100%)" }}
-                      transition={{ duration: 0.38, delay: 0.08 }}
-                    />
-                  )}
-
                   <motion.div
-                    animate={{ opacity: isActive ? 1 : 0.32 }}
+                    animate={{ opacity: isActive ? 1 : 0.35 }}
                     transition={{ duration: 0.28 }}
                   >
                     <div className="flex items-center gap-2 mb-0.5">
                       <span
-                        className="text-[10px] font-bold px-1.5 py-0.5 rounded-full border transition-all duration-300"
+                        className="text-[10px] font-bold px-2 py-0.5 rounded-full border transition-all duration-300"
                         style={{
                           borderColor: isActive ? `${s.color}40` : "#e2e8f0",
                           color: isActive ? s.color : "#94a3b8",
@@ -436,10 +390,10 @@ export function HowItWorks() {
                       >
                         Step 0{idx + 1}
                       </span>
-                      <span className="text-[10px] text-slate-400">{s.tagline}</span>
+                      <span className="text-[11px] text-slate-400 font-medium">{s.tagline}</span>
                     </div>
-                    <h3 className="font-montserrat text-[15px] font-bold text-slate-800 mb-0.5 leading-snug">{s.title}</h3>
-                    <p className="text-[12px] text-slate-500 leading-relaxed">{s.desc}</p>
+                    <h3 className="font-montserrat text-base font-bold text-slate-800 mb-0.5 leading-snug">{s.title}</h3>
+                    <p className="text-xs xl:text-sm text-slate-500 leading-relaxed">{s.desc}</p>
                   </motion.div>
                 </div>
               )
@@ -448,32 +402,36 @@ export function HowItWorks() {
         </div>
       </div>
 
-      {/* ── MOBILE STATIC FLOW ──────────────────────────────────────────────── */}
-      <div className="block lg:hidden py-14 px-5 bg-slate-50">
-        <div className="mb-8 text-center">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-sky-500">How it works</span>
-          <h2 className="mt-1.5 font-montserrat text-2xl font-extrabold text-slate-900 leading-tight">From classroom to career</h2>
-          <p className="text-xs text-slate-500 mt-1.5">4-step pipeline to land a tech internship.</p>
-        </div>
-        <div className="space-y-8">
+      {/* ── MOBILE / TABLET STATIC FLOW ── */}
+      <div className="block lg:hidden pb-14 sm:pb-20 px-4 sm:px-6">
+        <div className="mx-auto max-w-2xl space-y-6 sm:space-y-8">
           {steps.map((s, idx) => {
             const Scene = SCENES[idx]
             return (
-              <div key={s.title} className="bg-white border border-slate-200 rounded-2xl p-5 flex flex-col gap-4 shadow-sm">
+              <div
+                key={s.title}
+                className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow"
+              >
                 <div>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-full border"
-                      style={{ borderColor: `${s.color}30`, color: s.color, backgroundColor: `${s.color}0a` }}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span
+                      className="text-[10px] font-bold px-2 py-0.5 rounded-full border"
+                      style={{ borderColor: `${s.color}30`, color: s.color, backgroundColor: `${s.color}0a` }}
+                    >
                       Step 0{idx + 1}
                     </span>
-                    <span className="text-[10px] text-slate-400">{s.tagline}</span>
+                    <span className="text-[11px] text-slate-400 font-medium">{s.tagline}</span>
                   </div>
-                  <h3 className="font-montserrat text-base font-bold text-slate-800 mb-1">{s.title}</h3>
-                  <p className="text-[11px] text-slate-500 leading-relaxed">{s.desc}</p>
+                  <h3 className="font-montserrat text-lg sm:text-xl font-bold text-slate-900 mb-1">{s.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{s.desc}</p>
                 </div>
-                <div className="h-60 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center overflow-hidden relative">
-                  <div className="absolute top-2.5 right-2.5 z-10 rounded-xl p-1.5 border" style={{ backgroundColor: `${s.color}12`, borderColor: `${s.color}28` }}>
-                    <IALogo color={s.color} size={18} />
+
+                <div className="h-56 sm:h-72 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center overflow-hidden relative">
+                  <div
+                    className="absolute top-3 right-3 z-10 rounded-xl p-1.5 border shadow-xs"
+                    style={{ backgroundColor: `${s.color}12`, borderColor: `${s.color}28` }}
+                  >
+                    <IALogo color={s.color} size={20} />
                   </div>
                   <Scene />
                 </div>
