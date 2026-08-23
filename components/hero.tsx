@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export function Hero() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#004aad] pt-20 sm:pt-24 md:pt-28 pb-12 sm:pb-16 lg:pb-20">
+    <section className="relative w-full overflow-hidden bg-[#004aad] pt-28 sm:pt-24 md:pt-18 pb-12 sm:pb-16 lg:pb-20">
       {/* Grid background with radial fade-out mask */}
       <div
         aria-hidden="true"

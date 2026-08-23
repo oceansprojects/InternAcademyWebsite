@@ -34,30 +34,64 @@ const montserrat = Montserrat({
   weight: ["400", "600", "700", "800", "900"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#004aad",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXTAUTH_URL || "https://internacademy.co.in"),
   title: {
-    default: "InternAcademy",
+    default: "InternAcademy | A Launchpad to Real-World Skills",
     template: "%s | InternAcademy",
   },
   description:
-    "InternAcademy helps students build job-ready tech skills through guided mentorship, portfolio projects, and career-focused learning programs.",
+    "InternAcademy empowers students and graduates with hands-on offline tech cohorts in Bengaluru, real-world portfolio projects, 1-on-1 industry mentorship, and verifiable certifications.",
+  keywords: [
+    "InternAcademy",
+    "Intern Academy",
+    "Tech Cohorts Bengaluru",
+    "Software Development Training",
+    "Full Stack Web Development",
+    "UI/UX Design Cohort",
+    "Internships in Bengaluru",
+    "Offline Tech Academy",
+  ],
+  authors: [{ name: "InternAcademy" }],
+  creator: "InternAcademy",
+  publisher: "InternAcademy",
   applicationName: "InternAcademy",
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/apple-icon.png",
+    icon: [
+      { url: "/images/logo-des.png", sizes: "any" },
+      { url: "/images/logo-des.png", sizes: "32x32", type: "image/png" },
+      { url: "/images/logo-des.png", sizes: "192x192", type: "image/png" },
+      { url: "/images/logo-des.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/images/logo-des.png",
+    apple: [
+      { url: "/images/logo-des.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   openGraph: {
-    title: "InternAcademy",
+    title: "InternAcademy | A Launchpad to Real-World Skills",
     description:
-      "InternAcademy helps students build job-ready tech skills through guided mentorship, portfolio projects, and career-focused learning programs.",
+      "Build job-ready tech and design skills with Bengaluru's premier offline training cohorts, practical projects, and guaranteed internship opportunities.",
+    url: "https://internacademy.co.in",
     siteName: "InternAcademy",
     images: [
+      {
+        url: "/images/logo-des.png",
+        width: 800,
+        height: 800,
+        alt: "InternAcademy Logo",
+      },
       {
         url: "/logo-full.png",
         width: 1200,
         height: 630,
-        alt: "InternAcademy logo",
+        alt: "InternAcademy Banner",
       },
     ],
     locale: "en_US",
@@ -65,9 +99,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "InternAcademy",
+    title: "InternAcademy | A Launchpad to Real-World Skills",
     description:
-      "InternAcademy helps students build job-ready tech skills through guided mentorship, portfolio projects, and career-focused learning programs.",
+      "Build job-ready tech and design skills with Bengaluru's premier offline training cohorts, practical projects, and guaranteed internship opportunities.",
     images: ["/logo-full.png"],
   },
 };
@@ -79,9 +113,13 @@ export default function RootLayout({
 }) {
   return (
     <html
-  lang="en"
-  className={`light ${jakarta.variable} ${spaceGrotesk.variable} ${geistMono.variable} ${montserrat.variable} bg-background`}
->
+      lang="en"
+      className={`light ${jakarta.variable} ${spaceGrotesk.variable} ${geistMono.variable} ${montserrat.variable} bg-background`}
+    >
+      <head>
+        <link rel="icon" href="/images/logo-des.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/logo-des.png" />
+      </head>
       <body className="font-sans antialiased">
         <Providers>
           {children}

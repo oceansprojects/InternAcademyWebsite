@@ -6,7 +6,7 @@ const groups = [
     title: "Learn",
     links: [
       { name: "Programs", href: "/courses" },
-      { name: "Internships", href: "/courses" },
+      // { name: "Internships", href: "/courses" },
       { name: "Certifications", href: "/courses" },
       { name: "Blog", href: "/blog" },
     ],
@@ -14,7 +14,7 @@ const groups = [
   {
     title: "Company",
     links: [
-      { name: "About Us", href: "#" },
+      // { name: "About Us", href: "#" },
       { name: "How It Works", href: "/#how" },
       { name: "Success Stories", href: "/#stories" },
       { name: "Contact", href: "#contact" },
@@ -23,7 +23,7 @@ const groups = [
   {
     title: "For Partners",
     links: [
-      { name: "Hire Interns", href: "#" },
+      // { name: "Hire Interns", href: "#" },
       { name: "Post a Role", href: "#" },
       { name: "Partner With Us", href: "#" },
       { name: "Sign In", href: "/login" },
