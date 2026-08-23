@@ -93,8 +93,8 @@ export default async function ApplicationsPage() {
               </div>
             </Link>
           ))}
-
-          </div>
+        </div>
+      )}
         </div>
       </main>
       <SiteFooter />
