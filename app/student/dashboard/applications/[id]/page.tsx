@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 
 import { getStudentApplicationById } from "@/services/application.service";
 import ApplicationStatusBadge from "@/components/student-dashboard/ApplicationStatusBadge";
+import SiteHeader from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 interface Props {
   params: Promise<{
@@ -34,7 +36,10 @@ export default async function ApplicationDetailsPage({
   }
 
   return (
-    <div className="space-y-8">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
+      <SiteHeader />
+      <main className="flex-1 pt-28 sm:pt-32 md:pt-36 pb-12">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8">
 
       <div className="flex items-center justify-between">
 
@@ -132,6 +137,9 @@ export default async function ApplicationDetailsPage({
 
       </div>
 
+        </div>
+      </main>
+      <SiteFooter />
     </div>
   );
 }

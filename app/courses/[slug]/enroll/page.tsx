@@ -48,7 +48,7 @@ export default async function EnrollPage({ params }: Props) {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col">
         <SiteHeader />
-        <main className="flex-1 py-8 lg:py-12">
+        <main className="flex-1 pt-28 sm:pt-32 md:pt-36 pb-12 lg:pb-16">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 space-y-6">
             <EnrollmentHero programTitle={program.title} programCategory={program.category} />
             <EnrollmentStepper currentStep={2} />
@@ -102,7 +102,7 @@ export default async function EnrollPage({ params }: Props) {
     return (
       <div className="min-h-screen bg-slate-50 flex flex-col">
         <SiteHeader />
-        <main className="flex-1 py-8 lg:py-12">
+        <main className="flex-1 pt-28 sm:pt-32 md:pt-36 pb-12 lg:pb-16">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 space-y-6">
             <EnrollmentHero programTitle={program.title} programCategory={program.category} />
             <EnrollmentStepper currentStep={1} />
@@ -118,7 +118,7 @@ export default async function EnrollPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <SiteHeader />
-      <main className="flex-1 py-8 lg:py-12">
+      <main className="flex-1 pt-28 sm:pt-32 md:pt-36 pb-12 lg:pb-16">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 space-y-6">
           <EnrollmentHero programTitle={program.title} programCategory={program.category} />
           <EnrollmentStepper currentStep={2} />

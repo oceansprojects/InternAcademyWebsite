@@ -136,7 +136,7 @@ export default function CoursesPage() {
 
       <main className="flex-grow pb-24">
         {/* Concise and Modern Header Banner */}
-        <section className="bg-white border-b border-slate-200/60 py-12 px-6 md:px-10">
+        <section className="bg-white border-b border-slate-200/60 pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16 px-6 md:px-10">
           <div className="mx-auto max-w-[1280px]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>

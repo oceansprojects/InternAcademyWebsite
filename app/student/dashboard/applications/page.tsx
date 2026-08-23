@@ -6,6 +6,8 @@ import { auth } from "@/auth";
 import { getStudentApplications } from "@/services/application.service";
 
 import ApplicationStatusBadge from "@/components/student-dashboard/ApplicationStatusBadge";
+import SiteHeader from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 
 export default async function ApplicationsPage() {
   const session = await auth();
@@ -19,7 +21,10 @@ export default async function ApplicationsPage() {
   );
 
   return (
-    <div className="space-y-8">
+    <div className="min-h-screen bg-slate-50 flex flex-col">
+      <SiteHeader />
+      <main className="flex-1 pt-28 sm:pt-32 md:pt-36 pb-12">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8">
 
       <div>
         <h1 className="text-3xl font-bold">
@@ -89,9 +94,10 @@ export default async function ApplicationsPage() {
             </Link>
           ))}
 
+          </div>
         </div>
-      )}
-
+      </main>
+      <SiteFooter />
     </div>
   );
 }

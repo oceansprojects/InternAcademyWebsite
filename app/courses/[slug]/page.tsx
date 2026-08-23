@@ -249,7 +249,7 @@ export default function CourseDetailPage() {
   // ── Loading / Not found states ─────────────────────────────────────────────
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col">
+      <div className="min-h-screen bg-slate-50 flex flex-col pt-24 sm:pt-28">
         <SiteHeader />
         <div className="flex-1 flex items-center justify-center">
           <div className="animate-spin rounded-full h-10 w-10 border-4 border-[#004aad] border-t-transparent" />
@@ -260,7 +260,7 @@ export default function CourseDetailPage() {
 
   if (notFound || !data) {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col">
+      <div className="min-h-screen bg-slate-50 flex flex-col pt-24 sm:pt-28">
         <SiteHeader />
         <div className="flex-1 flex flex-col items-center justify-center gap-4 text-center px-6">
           <div className="text-4xl">🔍</div>
@@ -285,13 +285,13 @@ export default function CourseDetailPage() {
   const overviewData = parseOverview(overview?.intro_text)
 
   return (
-    <div className="min-h-screen lg:h-screen lg:max-h-screen bg-slate-50 text-slate-900 custom-scrollbar scroll-smooth flex flex-col overflow-hidden lg:overflow-hidden">
+    <div className="min-h-screen lg:h-screen lg:max-h-screen bg-slate-50 text-slate-900 custom-scrollbar scroll-smooth flex flex-col overflow-hidden lg:overflow-hidden pt-[68px] sm:pt-[76px]">
       <SiteHeader />
 
       <div className="flex-1 flex flex-col lg:flex-row lg:min-h-0 lg:overflow-hidden relative">
 
         {/* LEFT SIDEBAR */}
-        <aside className="hidden lg:block w-64 xl:w-72 border-r border-slate-200 bg-white flex-shrink-0 h-full overflow-y-auto no-scrollbar py-4 px-4">
+        <aside className="hidden lg:block w-64 xl:w-72 border-r border-slate-200 bg-white flex-shrink-0 h-full overflow-y-auto no-scrollbar py-6 px-4">
           <span className="text-[9px] font-extrabold uppercase tracking-widest text-[#00b4d8] mb-2 block">Course Outline</span>
           <nav className="flex flex-col space-y-0.5" aria-label="Course Sections">
             {sections.map((sect) => (
@@ -310,7 +310,7 @@ export default function CourseDetailPage() {
         </aside>
 
         {/* Mobile Header */}
-        <div className="lg:hidden bg-[#004aad] text-white py-8 px-6 space-y-4 relative overflow-hidden">
+        <div className="lg:hidden bg-[#004aad] text-white py-8 sm:py-10 px-6 space-y-4 relative overflow-hidden">
           <div aria-hidden="true" className="hero-grid-bg absolute inset-0 z-0 opacity-40 pointer-events-none" />
           <div className="relative z-10 space-y-2">
             <Link href="/courses" className="inline-flex items-center gap-1.5 text-white/80 hover:text-white text-xs font-semibold uppercase tracking-wider mb-1 transition-colors">

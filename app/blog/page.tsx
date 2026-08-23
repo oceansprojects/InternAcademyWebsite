@@ -185,7 +185,7 @@ const currentPosts = allApiPosts.slice(indexOfFirstPost, indexOfLastPost)
         {selectedPost ? (
           <div className="relative w-full">
             {/* Back Button - positioned far left close to edge of screen */}
-            <div className="absolute left-6 md:left-12 lg:left-16 xl:left-24 top-6 md:top-10 z-10">
+            <div className="absolute left-6 md:left-12 lg:left-16 xl:left-24 top-28 sm:top-32 md:top-36 z-10">
               <button
                 onClick={() => {
                   setSelectedPost(null)
@@ -198,7 +198,7 @@ const currentPosts = allApiPosts.slice(indexOfFirstPost, indexOfLastPost)
               </button>
             </div>
 
-            <article className="max-w-4xl mx-auto px-6 pt-16 md:pt-10 pb-16 md:pb-24 animate-in fade-in slide-in-from-bottom-4 duration-300">
+            <article className="max-w-4xl mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-16 md:pb-24 animate-in fade-in slide-in-from-bottom-4 duration-300">
               {/* Headline */}
               <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900 mt-4 mb-6 text-center leading-tight max-w-4xl mx-auto">
                 {selectedPost.title}
@@ -276,7 +276,7 @@ const currentPosts = allApiPosts.slice(indexOfFirstPost, indexOfLastPost)
         ) : (
           <>
             {/* Header Section */}
-            <section className="max-w-7xl mx-auto px-6 py-20 text-center">
+            <section className="max-w-7xl mx-auto px-6 pt-28 sm:pt-32 md:pt-36 pb-16 sm:pb-20 text-center">
               <div className="inline-block bg-[#004aad]/10 text-[#004aad] px-4 py-1.5 rounded-full font-inter text-xs font-semibold tracking-wider uppercase mb-6">
                 Our Blog
               </div>

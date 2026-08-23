@@ -64,8 +64,8 @@ export function SiteFooter() {
             <div className="mt-6 space-y-2.5">
               <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600">
                 <Mail size={15} className="shrink-0 text-[#004aad]" />
-                <a href="mailto:support@internacademy.com" className="hover:text-[#004aad] transition-colors">
-                  support@internacademy.com
+                <a href="mailto:support@internacademy.co.in" className="hover:text-[#004aad] transition-colors">
+                  support@internacademy.co.in
                 </a>
               </div>
               <div className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600">

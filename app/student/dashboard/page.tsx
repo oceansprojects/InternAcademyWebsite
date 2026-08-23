@@ -42,7 +42,7 @@ export default async function StudentDashboardPage() {
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <SiteHeader />
 
-      <main className="flex-1 py-8 lg:py-12">
+      <main className="flex-1 pt-28 sm:pt-32 md:pt-36 pb-12 lg:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-8">
           
           {/* Welcome Banner */}
@@ -330,7 +330,7 @@ export default async function StudentDashboardPage() {
               </div>
 
               {/* Upcoming Labs Info */}
-              <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-6 shadow-md space-y-4">
+              {/* <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-6 shadow-md space-y-4">
                 <div className="flex items-center gap-2 text-[#00d2fd] text-xs font-extrabold uppercase tracking-wider">
                   <Calendar className="size-4" />
                   <span>Koramangala Learning Hub</span>
@@ -345,7 +345,7 @@ export default async function StudentDashboardPage() {
                   <span>Schedule: Mon–Fri</span>
                   <span className="text-[#00d2fd] font-bold">9 AM – 6 PM</span>
                 </div>
-              </div>
+              </div> */}
 
               {/* Certificates Widget */}
               <div className="bg-white rounded-3xl p-6 border border-slate-200/80 shadow-sm space-y-4">

@@ -32,7 +32,7 @@ export default async function EnrollmentSuccessPage({ params }: Props) {
     <div className="min-h-screen bg-slate-50 flex flex-col">
       <SiteHeader />
 
-      <main className="flex-1 py-10 lg:py-16">
+      <main className="flex-1 pt-28 sm:pt-32 md:pt-36 pb-16 lg:pb-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 space-y-6">
 
           {/* Success Card */}
