@@ -1,6 +1,8 @@
 import type { NextAuthConfig } from "next-auth";
 
 export const authConfig = {
+  // AUTH_URL is set in .env — trustHost is still needed for Vercel/proxy environments
+  // where X-Forwarded-Host headers are present.
   trustHost: true,
 
   session: {
@@ -9,6 +11,7 @@ export const authConfig = {
 
   pages: {
     signIn: "/login",
+    // Note: admin login is at /admin/login and is handled separately via middleware.
   },
 
   providers: [],
