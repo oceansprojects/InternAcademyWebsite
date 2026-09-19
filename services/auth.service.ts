@@ -33,7 +33,7 @@ export async function deleteUser(id: string) {
 
     return result[0] ?? null;
   } catch (error: any) {
-    // Postgres FK violation — user has related records (payments, certifications, audit logs, etc.)
+    // Postgres FK violation  user has related records (payments, certifications, audit logs, etc.)
     if (error?.code === "23503") {
       throw new Error(
         "Cannot delete this user because they have related records (payments, certifications, or audit logs)."
@@ -49,16 +49,23 @@ export async function getOrCreateGoogleUser(data: {
   email: string;
   avatarUrl: string | null;
   oauthId: string;
+  role?: string;
 }) {
   const existing = await getUserByEmail(data.email);
 
   if (existing) {
-    if (!existing.oauth_id) {
+    const roleToUpdate =
+      data.role === "company" && existing.role !== "admin" && existing.role !== "super_admin"
+        ? "company"
+        : existing.role;
+
+    if (!existing.oauth_id || existing.role !== roleToUpdate) {
       const updated = await sql`
         UPDATE users
         SET oauth_provider = 'google',
             oauth_id = ${data.oauthId},
             avatar_url = COALESCE(avatar_url, ${data.avatarUrl}),
+            role = ${roleToUpdate}::user_role,
             updated_at = NOW()
         WHERE id = ${existing.id}
         RETURNING *;
@@ -69,6 +76,8 @@ export async function getOrCreateGoogleUser(data: {
 
     return existing;
   }
+
+  const assignedRole = data.role === "company" ? "company" : "student";
 
   const result = await sql`
     INSERT INTO users (
@@ -85,13 +94,14 @@ export async function getOrCreateGoogleUser(data: {
       ${data.avatarUrl},
       'google',
       ${data.oauthId},
-      'student'
+      ${assignedRole}::user_role
     )
     RETURNING *;
   `;
 
   return result[0];
 }
+
 
 export async function createUser(data: {
   name: string;

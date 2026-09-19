@@ -1,6 +1,7 @@
 import { sql } from "@/lib/db";
 import { getBlogArticles, BlogArticle } from "@/lib/blog-feed";
 import { sendEmail } from "@/lib/email";
+import { getAppUrl } from "@/lib/env";
 
 export interface DailyDigestSubscriber {
   id: string;
@@ -267,7 +268,7 @@ export async function processDailyBlogEmails(options?: {
       };
     }
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://internacademy.co.in";
+    const appUrl = getAppUrl();
     const emailSubject = `Today's Tech Digest - InternAcademy (${new Date().toLocaleDateString("en-US", { month: "short", day: "numeric" })})`;
     const htmlContent = generateDailyDigestHtml(topArticles, appUrl);
     const textContent = generateDailyDigestText(topArticles, appUrl);

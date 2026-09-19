@@ -74,10 +74,18 @@ function SignupPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 lg:p-8">
-      <div className="w-full max-w-5xl bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden grid md:grid-cols-2">
+    <div className="relative min-h-screen flex items-center justify-center p-4 lg:p-8">
+      <img
+        src="/auth-bg.webp"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-40"
+      />
+
+      <div className="relative z-10 w-full max-w-5xl bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden grid md:grid-cols-2">
         {/* Left Side: Brand Hero */}
         <div className="hidden md:flex flex-col justify-between bg-gradient-to-br from-[#004aad] via-[#003c8c] to-[#00b4d8] p-10 text-white relative overflow-hidden">
+          {/* Subtle glow elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl transform translate-x-20 -translate-y-20 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00d2fd]/20 rounded-full blur-3xl transform -translate-x-20 translate-y-20 pointer-events-none" />
 
@@ -86,7 +94,7 @@ function SignupPageContent() {
             <Link href="/" className="inline-flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
               <span className="font-montserrat text-2xl font-extrabold tracking-tight">InternAcademy</span>
             </Link>
-            <p className="text-xs text-white/80 font-medium mt-1">Bengaluru Tech & Design Cohorts</p>
+            <p className="text-xs text-white/70 font-medium mt-1">CSN Tech &amp; Design Cohorts</p>
           </div>
 
           {/* Middle Content */}
@@ -118,7 +126,7 @@ function SignupPageContent() {
 
           {/* Bottom Back Link */}
           <div className="relative z-10 pt-4">
-            <Link href="/" className="inline-flex items-center gap-2 text-xs font-semibold text-white/80 hover:text-white transition-colors">
+            <Link href="/" className="inline-flex items-center gap-2 text-xs font-semibold text-white/70 hover:text-white transition-colors">
               <ArrowLeft className="size-3.5" />
               <span>Back to home</span>
             </Link>

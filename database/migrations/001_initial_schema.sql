@@ -73,7 +73,7 @@ CREATE TABLE programs (
   duration_weeks   INT        NOT NULL,
   batch_mode       batch_mode NOT NULL DEFAULT 'offline',
   schedule         TEXT,                         -- "Weekly (3 sessions)"
-  location         TEXT,                         -- "Koramangala, Bengaluru"
+  location         TEXT,                         -- "Koramangala, CSN"
   base_price       INT        NOT NULL,          -- INR paise. ₹49,999 → 4999900
   discounted_price INT        NOT NULL,          -- INR paise. ₹34,999 → 3499900
   is_popular       BOOLEAN    NOT NULL DEFAULT FALSE,
@@ -463,7 +463,7 @@ VALUES ('Admin', 'admin@internacademy.in', 'admin', 'credentials');
 
 INSERT INTO global_faqs (question, answer) VALUES
   ('Is this training fully offline?',
-   'Yes. All classes, design labs, and coding cohorts happen in person at our Koramangala center in Bengaluru. This helps ensure peer collaboration and instant mentor feedback.'),
+   'Yes. All classes, design labs, and coding cohorts happen in person at our Koramangala center in CSN. This helps ensure peer collaboration and instant mentor feedback.'),
   ('How does the guaranteed internship work?',
    'After completing the cohort curriculum, students are placed into an 8-week Guild internship at InternAcademy Agency, working on real client projects with mentor supervision.'),
   ('What laptop specifications are required?',

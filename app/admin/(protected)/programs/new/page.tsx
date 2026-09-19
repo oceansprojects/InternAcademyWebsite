@@ -103,7 +103,7 @@ export default function NewProgramPage() {
       const message = error instanceof Error ? error.message : "Failed to create program"
       if (message.toLowerCase().includes("slug")) {
         setSlugError(message)
-        
+
       } else {
         setError(message)
       }
@@ -254,7 +254,7 @@ export default function NewProgramPage() {
                 name="location"
                 value={basicInfo.location}
                 onChange={handleBasicInfoChange}
-                placeholder="Bengaluru, Mumbai, Delhi"
+                placeholder="CSN, Mumbai, Delhi"
                 className="w-full border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
             </div>

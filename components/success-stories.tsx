@@ -14,7 +14,7 @@ const stories = [
     role: "Data Analyst @ FinEdge",
     program: "Data Science & Analytics",
     quote:
-      "The offline cohort kept me accountable. My mentor reviewed every project — that's why my portfolio stood out.",
+      "The offline cohort kept me accountable. My mentor reviewed every project  that's why my portfolio stood out.",
   },
   {
     name: "Rahul Verma",

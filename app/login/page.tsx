@@ -60,8 +60,15 @@ function LoginPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 lg:p-8">
-      <div className="w-full max-w-5xl bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden grid md:grid-cols-2">
+    <div className="relative min-h-screen flex items-center justify-center p-4 lg:p-8">
+      <img
+        src="/auth-bg.webp"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-center opacity-40"
+      />
+
+      <div className="relative z-10 w-full max-w-5xl bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden grid md:grid-cols-2">
         {/* Left Side: Brand Hero */}
         <div className="hidden md:flex flex-col justify-between bg-gradient-to-br from-[#004aad] via-[#003c8c] to-[#00b4d8] p-10 text-white relative overflow-hidden">
           {/* Subtle glow elements */}
@@ -73,7 +80,7 @@ function LoginPageContent() {
             <Link href="/" className="inline-flex items-center gap-2 text-white hover:opacity-90 transition-opacity">
               <span className="font-montserrat text-2xl font-extrabold tracking-tight">InternAcademy</span>
             </Link>
-            <p className="text-xs text-white/80 font-medium mt-1">Bengaluru Tech & Design Cohorts</p>
+            <p className="text-xs text-white/80 font-medium mt-1">CSN Tech & Design Cohorts</p>
           </div>
 
           {/* Middle Content / Quote */}
@@ -96,8 +103,8 @@ function LoginPageContent() {
                 IA
               </div>
               <div>
-                <p className="text-xs font-bold">Bengaluru Learning Center</p>
-                <p className="text-[11px] text-white/70">Koramangala 4th Block</p>
+                <p className="text-xs font-bold">Intern Academy</p>
+                <p className="text-[11px] text-white/70">The Golden City Center 1st Floor</p>
               </div>
             </div>
           </div>

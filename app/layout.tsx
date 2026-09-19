@@ -12,6 +12,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { Toaster } from "sonner";
+import { getAppUrl } from "@/lib/env";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -41,21 +42,21 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXTAUTH_URL || "https://internacademy.co.in"),
+  metadataBase: new URL(getAppUrl()),
   title: {
     default: "InternAcademy | A Launchpad to Real-World Skills",
     template: "%s | InternAcademy",
   },
   description:
-    "InternAcademy empowers students and graduates with hands-on offline tech cohorts in Bengaluru, real-world portfolio projects, 1-on-1 industry mentorship, and verifiable certifications.",
+    "InternAcademy empowers students and graduates with hands-on offline tech cohorts in CSN, real-world portfolio projects, 1-on-1 industry mentorship, and verifiable certifications.",
   keywords: [
     "InternAcademy",
     "Intern Academy",
-    "Tech Cohorts Bengaluru",
+    "Tech Cohorts CSN",
     "Software Development Training",
     "Full Stack Web Development",
     "UI/UX Design Cohort",
-    "Internships in Bengaluru",
+    "Internships in CSN",
     "Offline Tech Academy",
   ],
   authors: [{ name: "InternAcademy" }],
@@ -77,8 +78,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "InternAcademy | A Launchpad to Real-World Skills",
     description:
-      "Build job-ready tech and design skills with Bengaluru's premier offline training cohorts, practical projects, and guaranteed internship opportunities.",
-    url: "https://internacademy.co.in",
+      "Build job-ready tech and design skills with CSN's premier offline training cohorts, practical projects, and guaranteed internship opportunities.",
+    url: getAppUrl(),
     siteName: "InternAcademy",
     images: [
       {
@@ -101,7 +102,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "InternAcademy | A Launchpad to Real-World Skills",
     description:
-      "Build job-ready tech and design skills with Bengaluru's premier offline training cohorts, practical projects, and guaranteed internship opportunities.",
+      "Build job-ready tech and design skills with CSN's premier offline training cohorts, practical projects, and guaranteed internship opportunities.",
     images: ["/logo-full.png"],
   },
 };

@@ -79,7 +79,7 @@ export default async function AdminUsersPage({ searchParams }: Props) {
               Registered Users
             </h1>
             <p className="text-xs md:text-sm text-slate-300 font-normal max-w-xl">
-              View and manage all platform users — students, instructors, and admins.
+              View and manage all platform users  students, instructors, and admins.
             </p>
           </div>
           <div className="shrink-0 bg-white/10 border border-white/20 rounded-2xl px-6 py-4 text-center">
@@ -252,10 +252,10 @@ export default async function AdminUsersPage({ searchParams }: Props) {
                           <span>
                             {user.created_at
                               ? new Date(user.created_at).toLocaleDateString("en-IN", {
-                                  day: "numeric",
-                                  month: "short",
-                                  year: "numeric",
-                                })
+                                day: "numeric",
+                                month: "short",
+                                year: "numeric",
+                              })
                               : "N/A"}
                           </span>
                         </div>

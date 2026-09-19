@@ -3,7 +3,9 @@ import { Hero } from "@/components/hero"
 import { MarqueeBar } from "@/components/marquee-bar"
 import { Programs } from "@/components/programs"
 import { HowItWorks } from "@/components/how-it-works"
-import { SuccessStories } from "@/components/success-stories"
+import { OurGoal } from "@/components/our-goal"
+import { TrustedPartners } from "@/components/trusted-partners"
+import { TestimonialsSection } from "@/components/testimonials-section"
 import { InternBotCta } from "@/components/internbot-cta"
 import { FinalCta } from "@/components/final-cta"
 import { SiteFooter } from "@/components/site-footer"
@@ -18,7 +20,9 @@ export default function Page() {
         <MarqueeBar />
         <Programs />
         <HowItWorks />
-        <SuccessStories />
+        <OurGoal />
+        <TrustedPartners />
+        <TestimonialsSection />
         <InternBotCta />
         <FinalCta />
       </main>

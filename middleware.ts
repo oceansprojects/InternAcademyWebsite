@@ -9,6 +9,8 @@ export async function middleware(request: NextRequest) {
     pathname === "/login" ||
     pathname === "/signup" ||
     pathname === "/admin/login" ||
+    pathname === "/company/login" ||
+    pathname === "/company/signup" ||
     pathname.startsWith("/api/auth")
   ) {
     return NextResponse.next();
@@ -53,7 +55,25 @@ export async function middleware(request: NextRequest) {
 
     const role = (token as any).role;
     if (role !== "admin" && role !== "super_admin") {
-      // Non-admin user trying to access admin — redirect to home
+      const homeUrl = request.nextUrl.clone();
+      homeUrl.pathname = "/";
+      return NextResponse.redirect(homeUrl);
+    }
+
+    return NextResponse.next();
+  }
+
+  // 5. Protect /company/* routes
+  if (pathname.startsWith("/company")) {
+    if (!token) {
+      const companyLoginUrl = request.nextUrl.clone();
+      companyLoginUrl.pathname = "/company/login";
+      companyLoginUrl.searchParams.set("callbackUrl", pathname);
+      return NextResponse.redirect(companyLoginUrl);
+    }
+
+    const role = (token as any).role;
+    if (role !== "company") {
       const homeUrl = request.nextUrl.clone();
       homeUrl.pathname = "/";
       return NextResponse.redirect(homeUrl);
@@ -67,13 +87,8 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths EXCEPT:
-     * - _next/static  (static files)
-     * - _next/image   (image optimization)
-     * - favicon.ico
-     * - public files  (images, fonts, etc.)
-     */
-    "/((?!_next/static|_next/image|favicon\\.ico|images/|fonts/|icons/).*)",
+    "/student/:path*",
+    "/admin/:path*",
+    "/company/:path*",
   ],
 };

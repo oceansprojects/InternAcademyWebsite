@@ -20,7 +20,7 @@ export function InternBotCta() {
               </h2>
               <p className="mt-4 max-w-md text-slate-200 leading-relaxed">
                 Get instant recommendations, course guidance, and answers about admissions,
-                fees, and outcomes — all from the InternAcademy website knowledge base.
+                fees, and outcomes  all from the InternAcademy website knowledge base.
               </p>
               <a href="#internbot-chat" className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-base font-semibold text-slate-900 transition hover:bg-slate-100">
                 <Bot className="size-4" aria-hidden="true" />

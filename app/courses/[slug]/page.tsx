@@ -66,7 +66,7 @@ function parseOverview(raw: string | null | undefined): OverviewData | null {
       }
     }
   } catch {
-    // legacy plain text — treat as bold_intro only
+    // legacy plain text  treat as bold_intro only
     return { bold_intro: raw, paragraphs: [], master_points: [] }
   }
   return { bold_intro: raw, paragraphs: [], master_points: [] }
@@ -299,8 +299,8 @@ export default function CourseDetailPage() {
                 key={sect.id}
                 onClick={() => handleNavClick(sect.id)}
                 className={`text-left px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all duration-200 cursor-pointer ${activeSection === sect.id
-                    ? "text-[#004aad] bg-[#e0f2fe] translate-x-1"
-                    : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
+                  ? "text-[#004aad] bg-[#e0f2fe] translate-x-1"
+                  : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
                   }`}
               >
                 {sect.label}
@@ -339,7 +339,7 @@ export default function CourseDetailPage() {
             <div>
               <h3 className="font-montserrat text-base font-extrabold leading-tight">{program.title}</h3>
               <p className="text-[10px] text-white/80 font-medium mt-1 uppercase tracking-wider flex items-center gap-1">
-                <MapPin className="size-3" /> {program.location ?? "Offline in Bengaluru"}
+                <MapPin className="size-3" /> {program.location ?? "Offline in CSN"}
               </p>
             </div>
           </div>
@@ -503,7 +503,7 @@ export default function CourseDetailPage() {
                         const isOpen = expandedModule === idx
                         return (
                           <div key={mod.id} className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
-                            {/* Header row — always visible */}
+                            {/* Header row  always visible */}
                             <button
                               type="button"
                               onClick={() => setExpandedModule(isOpen ? null : idx)}
@@ -702,7 +702,7 @@ export default function CourseDetailPage() {
                               </p>
                             )}
 
-                            {/* Expertise — from expertise table, fallback to bio */}
+                            {/* Expertise  from expertise table, fallback to bio */}
                             {member.expertise.length > 0 ? (
                               <p className="text-xs text-slate-600 font-medium flex items-start gap-1.5">
                                 <span className="shrink-0">🎯</span>
@@ -827,10 +827,10 @@ export default function CourseDetailPage() {
                   </h2>
                   <div className="space-y-2">
                     {[
-                      { q: "Is this training fully offline?", a: "Yes. All classes, design labs, and coding cohorts happen in person at our Koramangala center in Bengaluru. This helps ensure peer collaboration and instant mentor feedback." },
+                      { q: "Is this training fully offline?", a: "Yes. All classes, design labs, and coding cohorts happen in person at our Koramangala center in CSN. This helps ensure peer collaboration and instant mentor feedback." },
                       { q: "How does the guaranteed internship work?", a: "Upon completing the initial academic training weeks and passing the threshold validation test, you are induction-ready. You will work for 8 weeks inside our agency studio on active client deliverables." },
                       { q: "What laptop specifications are required?", a: "A standard laptop with at least 8GB RAM and a modern multi-core processor (Intel i5/Ryzen 5 or higher / Apple M1) running Windows, macOS, or Linux is sufficient." },
-                      { q: "Do you offer placement assistance?", a: "Yes. We offer mock coding interviews, resume scrubbing, LinkedIn reviews, and referral connections to our network of partner startups and tech recruiters in Bengaluru." },
+                      { q: "Do you offer placement assistance?", a: "Yes. We offer mock coding interviews, resume scrubbing, LinkedIn reviews, and referral connections to our network of partner startups and tech recruiters in CSN." },
                       { q: "What is the batch cancellation or refund policy?", a: "Cancellations are accepted up to 7 days before the batch start date for a full refund of deposit. Inside 7 days, fees can be deferred to a subsequent batch." },
                     ].map((faq, idx) => {
                       const isOpen = expandedFaq === idx
@@ -859,7 +859,7 @@ export default function CourseDetailPage() {
           </div>
 
           <footer className="border-t border-slate-200/80 pt-6 mt-12 text-center text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-            © 2026 Intern Academy. Bengaluru Center.
+            © 2026 Intern Academy. CSN Center.
           </footer>
         </main>
 
@@ -882,7 +882,7 @@ export default function CourseDetailPage() {
                 <div>
                   <h3 className="font-montserrat text-sm font-extrabold tracking-tight leading-tight">{program.title}</h3>
                   <p className="text-[10px] text-white/80 font-medium mt-1 uppercase tracking-wider flex items-center gap-1">
-                    <MapPin className="size-3" /> {program.location ?? "Offline in Bengaluru"}
+                    <MapPin className="size-3" /> {program.location ?? "Offline in CSN"}
                   </p>
                 </div>
               </div>
@@ -993,7 +993,7 @@ export default function CourseDetailPage() {
                     // Handle youtube.com/watch?v=
                     const watchMatch = url.match(/[?&]v=([^?&]+)/)
                     if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}?autoplay=1`
-                    // Already an embed URL or other — use as-is
+                    // Already an embed URL or other  use as-is
                     return url
                   })()}
                   className="absolute inset-0 w-full h-full"

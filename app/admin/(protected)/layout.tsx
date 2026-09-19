@@ -2,7 +2,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, BookOpen, Menu, X, HelpCircle, Users, LogOut, GraduationCap, ShieldCheck, UserCircle, Mail, Award } from "lucide-react";
+import {
+  Home,
+  BookOpen,
+  Menu,
+  X,
+  HelpCircle,
+  Users,
+  LogOut,
+  GraduationCap,
+  ShieldCheck,
+  UserCircle,
+  Mail,
+  Award,
+  Building2,
+  Briefcase,
+} from "lucide-react";
 import { useState } from "react";
 import { ToastProvider } from "@/components/ui/toast";
 import { adminSignOut } from "@/app/actions/auth";
@@ -29,6 +44,16 @@ export default function AdminLayout({
       href: "/admin/users",
       label: "Users",
       icon: UserCircle,
+    },
+    {
+      href: "/admin/companies",
+      label: "Companies",
+      icon: Building2,
+    },
+    {
+      href: "/admin/opportunities",
+      label: "Job/Internship Posts",
+      icon: Briefcase,
     },
     {
       href: "/admin/subscribers",

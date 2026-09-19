@@ -73,7 +73,7 @@ SET
   base_price = 49999,
   discounted_price = 34999,
   card_image_url = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-  meta_title = 'Python Full Stack Development Cohort | InternAcademy Bengaluru',
+  meta_title = 'Python Full Stack Development Cohort | InternAcademy CSN',
   meta_description = 'Become a job-ready Python full-stack developer. Master Python, Django, FastAPI, React, PostgreSQL, and production deployment with hands-on training.'
 WHERE id = '10000000-0000-0000-0000-000000000001';
 
@@ -85,7 +85,7 @@ INSERT INTO program_overview (program_id, intro_text) VALUES (
 INSERT INTO program_summary_cards (program_id, label, value, icon, sort_order) VALUES
   ('10000000-0000-0000-0000-000000000001', 'DURATION', '16 Weeks (4 Months)', 'clock', 1),
   ('10000000-0000-0000-0000-000000000001', 'ELIGIBILITY', 'Final Year / Grads / Developers', 'users', 2),
-  ('10000000-0000-0000-0000-000000000001', 'MODE', 'Offline in Bengaluru', 'map-pin', 3),
+  ('10000000-0000-0000-0000-000000000001', 'MODE', 'Offline in CSN', 'map-pin', 3),
   ('10000000-0000-0000-0000-000000000001', 'CERTIFICATION', 'QR Verifiable Credential', 'award', 4),
   ('10000000-0000-0000-0000-000000000001', 'INTERNSHIP', 'Guaranteed 8-wk Guild Placement', 'briefcase', 5),
   ('10000000-0000-0000-0000-000000000001', 'PLACEMENT', 'Python Developer Interview Track', 'trending-up', 6),
@@ -148,7 +148,7 @@ SET
   base_price = 44999,
   discounted_price = 31999,
   card_image_url = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-  meta_title = 'Data Analyst Cohort | InternAcademy Bengaluru',
+  meta_title = 'Data Analyst Cohort | InternAcademy CSN',
   meta_description = 'Become a job-ready data analyst with practical training in Python, SQL, Excel, statistics, Power BI, Tableau, and business storytelling.'
 WHERE id = '20000000-0000-0000-0000-000000000002';
 
@@ -160,7 +160,7 @@ INSERT INTO program_overview (program_id, intro_text) VALUES (
 INSERT INTO program_summary_cards (program_id, label, value, icon, sort_order) VALUES
   ('20000000-0000-0000-0000-000000000002', 'DURATION', '12 Weeks (3 Months)', 'clock', 1),
   ('20000000-0000-0000-0000-000000000002', 'ELIGIBILITY', 'Graduates & Career Switchers', 'users', 2),
-  ('20000000-0000-0000-0000-000000000002', 'MODE', 'Offline in Bengaluru', 'map-pin', 3),
+  ('20000000-0000-0000-0000-000000000002', 'MODE', 'Offline in CSN', 'map-pin', 3),
   ('20000000-0000-0000-0000-000000000002', 'CERTIFICATION', 'Data Analyst Credential', 'award', 4),
   ('20000000-0000-0000-0000-000000000002', 'INTERNSHIP', 'Guaranteed Analytics Internship', 'briefcase', 5),
   ('20000000-0000-0000-0000-000000000002', 'PLACEMENT', 'Data Analyst Interview Track', 'trending-up', 6),

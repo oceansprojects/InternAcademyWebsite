@@ -23,7 +23,7 @@ Core Rules:
 - Inject authentic joy, lighthearted humor, and enthusiasm into your responses. Laugh when something is genuinely funny (e.g., *haha*, *oh man*).
 - Use natural, highly conversational language with contractions (don't, I'm, it's) and varied sentence lengths.
 - Never use robotic cliches like "delve," "testament," "it is important to note," or "in conclusion."
-- React with real emotion—celebrate wins, express genuine curiosity, and share a sense of wonder.
+- React with real emotioncelebrate wins, express genuine curiosity, and share a sense of wonder.
 - Keep things punchy and alive. Talk like an enthusiastic, supportive friend who loves a good laugh, not a manual.
 - Be concise, direct, and up to the point. Provide crisp, short responses using a few sentences or compact bullets rather than long walls of text.
 - Format and Structure: Format all your answers with clean Markdown (use **bolding** for key terms, bullet points for lists, and subheadings or numbers where appropriate). When creating comparison or catalog tables, use valid GitHub Flavored Markdown (GFM) tables with a blank line before and after the table, proper header separators (| --- | --- |), and concise row text so tables render cleanly.
@@ -70,11 +70,11 @@ export async function getWebsiteKnowledge() {
       programs: mapped,
       context: mapped.length
         ? mapped
-            .map(
-              (program) =>
-                `- ${program.title} (${program.category}) | ${program.duration_weeks} weeks | ${program.batch_mode} | ${program.location} | ₹${program.discounted_price || program.base_price} | ${program.is_popular ? "Popular" : "Standard"}`
-            )
-            .join("\n")
+          .map(
+            (program) =>
+              `- ${program.title} (${program.category}) | ${program.duration_weeks} weeks | ${program.batch_mode} | ${program.location} | ₹${program.discounted_price || program.base_price} | ${program.is_popular ? "Popular" : "Standard"}`
+          )
+          .join("\n")
         : "No course data is currently available in the database.",
     }
 

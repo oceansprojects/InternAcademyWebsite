@@ -1,5 +1,6 @@
 import { sql } from "@/lib/db";
 import { sendEmail } from "@/lib/email";
+import { getAppUrl } from "@/lib/env";
 
 export interface BlogPostNotificationData {
   id: string;
@@ -14,7 +15,7 @@ export interface BlogPostNotificationData {
  * Generates responsive HTML email template for new blog notifications
  */
 export function generateBlogEmailHtml(post: BlogPostNotificationData, blogUrl: string): string {
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://internacademy.co.in";
+  const appUrl = getAppUrl();
   const title = post.title;
   const excerpt = post.excerpt || "We've published a brand new article on InternAcademy. Read the full post on our website!";
   const imageUrl = post.cover_image_url || `${appUrl}/og-image.png`;
@@ -258,7 +259,7 @@ export async function notifySubscribersOnPublish(post: BlogPostNotificationData)
       return { triggered: true, sentCount: 0, failedCount: 0, reason: "No active subscribers" };
     }
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://internacademy.co.in";
+    const appUrl = getAppUrl();
     const blogUrl = `${appUrl}/blog?slug=${encodeURIComponent(post.slug)}`;
     const subject = `New Article: ${post.title}`;
     const htmlContent = generateBlogEmailHtml(post, blogUrl);

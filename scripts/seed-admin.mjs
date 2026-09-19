@@ -36,7 +36,7 @@ async function main() {
     return;
   }
 
-  console.log('Admin user NOT found — creating...');
+  console.log('Admin user NOT found  creating...');
 
   const passwordHash = await bcrypt.hash(ADMIN_PASSWORD, 12);
 

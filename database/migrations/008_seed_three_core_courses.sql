@@ -28,7 +28,7 @@ UPDATE faculty
 SET
   name = 'Dr. Sneha Rao',
   role = 'Principal AI Researcher & Data Architect',
-  institution = 'PhD in Machine Learning (IISc Bengaluru)',
+  institution = 'PhD in Machine Learning (IISc CSN)',
   bio = 'Specializes in Large Language Models, Generative AI pipeline optimization, and large-scale data engineering.',
   avatar_url = 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
   linkedin_url = 'https://linkedin.com',
@@ -39,7 +39,7 @@ WHERE id = 'e8969208-80cd-4991-b879-96f6c368a9db';
 INSERT INTO faculty (id, name, role, institution, bio, avatar_url, linkedin_url, experience_years)
 VALUES
   ('7fafdbad-d1a2-4952-9619-2b8823b453e3', 'Aravind Menon', 'Lead Architect & Senior Full-Stack Engineer', 'Ex-Engineering Lead at Swiggy', '12+ years of experience building high-scale web platforms.', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80', 'https://linkedin.com', 12),
-  ('e8969208-80cd-4991-b879-96f6c368a9db', 'Dr. Sneha Rao', 'Principal AI Researcher & Data Architect', 'PhD in Machine Learning (IISc Bengaluru)', 'Specializes in LLMs, Generative AI pipelines, and data engineering.', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80', 'https://linkedin.com', 10)
+  ('e8969208-80cd-4991-b879-96f6c368a9db', 'Dr. Sneha Rao', 'Principal AI Researcher & Data Architect', 'PhD in Machine Learning (IISc CSN)', 'Specializes in LLMs, Generative AI pipelines, and data engineering.', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80', 'https://linkedin.com', 10)
 ON CONFLICT (id) DO UPDATE SET
   name = EXCLUDED.name,
   role = EXCLUDED.role,
@@ -78,7 +78,7 @@ INSERT INTO programs (
   16,
   'offline',
   'Mon-Fri (In-person Cohort Labs)',
-  'Koramangala, Bengaluru',
+  'Koramangala, CSN',
   49999,
   34999,
   TRUE,
@@ -89,7 +89,7 @@ INSERT INTO programs (
   5,
   'Watch the 5-minute induction preview of our full-stack engineering guild.',
   'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
-  'Full Stack Development Cohort | InternAcademy Bengaluru',
+  'Full Stack Development Cohort | InternAcademy CSN',
   'Become a job-ready full-stack software engineer. Master React, Node.js, Next.js, and PostgreSQL with guaranteed internship placement.'
 );
 
@@ -118,7 +118,7 @@ INSERT INTO program_overview (program_id, intro_text) VALUES (
 INSERT INTO program_summary_cards (program_id, label, value, icon, sort_order) VALUES
   ('10000000-0000-0000-0000-000000000001', 'DURATION', '16 Weeks (4 Months)', 'clock', 1),
   ('10000000-0000-0000-0000-000000000001', 'ELIGIBILITY', 'Final Year / Grads / Devs', 'users', 2),
-  ('10000000-0000-0000-0000-000000000001', 'MODE', 'Offline in Bengaluru', 'map-pin', 3),
+  ('10000000-0000-0000-0000-000000000001', 'MODE', 'Offline in CSN', 'map-pin', 3),
   ('10000000-0000-0000-0000-000000000001', 'CERTIFICATION', 'QR Verifiable Credential', 'award', 4),
   ('10000000-0000-0000-0000-000000000001', 'INTERNSHIP', 'Guaranteed 8-wk Guild Placement', 'briefcase', 5),
   ('10000000-0000-0000-0000-000000000001', 'PLACEMENT', '100% Interview Support', 'trending-up', 6),
@@ -193,7 +193,7 @@ INSERT INTO programs (
   12,
   'offline',
   'Tue-Sat (AI Research Lab Sessions)',
-  'Koramangala, Bengaluru',
+  'Koramangala, CSN',
   59999,
   42999,
   TRUE,
@@ -204,7 +204,7 @@ INSERT INTO programs (
   6,
   'Explore how our AI guild builds autonomous RAG agents and fine-tunes open-source models.',
   'https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=800&q=80',
-  'Generative AI & Agentic Systems Cohort | InternAcademy Bengaluru',
+  'Generative AI & Agentic Systems Cohort | InternAcademy CSN',
   'Master Generative AI, LLMs, Retrieval-Augmented Generation (RAG), Fine-Tuning, and AI Agents with Python, LangChain, PyTorch, and Vector DBs.'
 );
 
@@ -226,14 +226,14 @@ INSERT INTO program_section_config (program_id, section, is_enabled, sort_order)
 -- Overview for Course 2
 INSERT INTO program_overview (program_id, intro_text) VALUES (
   '20000000-0000-0000-0000-000000000002',
-  '{"bold_intro":"Build next-generation Artificial Intelligence applications using Foundation LLMs, Vector Databases, and Agentic Workflows.","paragraphs":["Generative AI is transforming modern software engineering. This 12-week intensive masterclass equips you to harness transformer architectures, build RAG pipelines, fine-tune open-source models (Llama 3, Mistral), and construct multi-agent systems.","Taught in-person at Bengaluru with access to dedicated GPU compute clusters for model training and deployment."],"master_points":["Master Prompt Engineering, Function Calling, and Structured Outputs","Build advanced RAG pipelines using LangChain, LlamaIndex, and Pinecone/Qdrant","Fine-tune open-source LLMs using LoRA/QLoRA on custom domain datasets","Develop autonomous multi-agent AI systems with Tool Calling and ReAct patterns"]}'
+  '{"bold_intro":"Build next-generation Artificial Intelligence applications using Foundation LLMs, Vector Databases, and Agentic Workflows.","paragraphs":["Generative AI is transforming modern software engineering. This 12-week intensive masterclass equips you to harness transformer architectures, build RAG pipelines, fine-tune open-source models (Llama 3, Mistral), and construct multi-agent systems.","Taught in-person at CSN with access to dedicated GPU compute clusters for model training and deployment."],"master_points":["Master Prompt Engineering, Function Calling, and Structured Outputs","Build advanced RAG pipelines using LangChain, LlamaIndex, and Pinecone/Qdrant","Fine-tune open-source LLMs using LoRA/QLoRA on custom domain datasets","Develop autonomous multi-agent AI systems with Tool Calling and ReAct patterns"]}'
 );
 
 -- Summary Cards for Course 2
 INSERT INTO program_summary_cards (program_id, label, value, icon, sort_order) VALUES
   ('20000000-0000-0000-0000-000000000002', 'DURATION', '12 Weeks (3 Months)', 'clock', 1),
   ('20000000-0000-0000-0000-000000000002', 'ELIGIBILITY', 'Developers & Data Enthusiasts', 'users', 2),
-  ('20000000-0000-0000-0000-000000000002', 'MODE', 'Offline in Bengaluru', 'map-pin', 3),
+  ('20000000-0000-0000-0000-000000000002', 'MODE', 'Offline in CSN', 'map-pin', 3),
   ('20000000-0000-0000-0000-000000000002', 'CERTIFICATION', 'Generative AI Specialist Cert', 'award', 4),
   ('20000000-0000-0000-0000-000000000002', 'INTERNSHIP', 'Guaranteed AI Guild Internship', 'briefcase', 5),
   ('20000000-0000-0000-0000-000000000002', 'PLACEMENT', 'AI Engineer Interview Track', 'trending-up', 6),
@@ -305,7 +305,7 @@ INSERT INTO programs (
   14,
   'offline',
   'Mon-Fri (Data Lab Cohort)',
-  'Koramangala, Bengaluru',
+  'Koramangala, CSN',
   54999,
   39999,
   FALSE,
@@ -316,8 +316,8 @@ INSERT INTO programs (
   4,
   'Learn how our data engineering cohort handles petabyte-scale data pipelines.',
   'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
-  'Data Engineering Masterclass | InternAcademy Bengaluru',
-  'Master Big Data Pipelines, Apache Spark, Kafka, Snowflake, dbt, and Cloud Data Warehouses with hands-on offline training in Bengaluru.'
+  'Data Engineering Masterclass | InternAcademy CSN',
+  'Master Big Data Pipelines, Apache Spark, Kafka, Snowflake, dbt, and Cloud Data Warehouses with hands-on offline training in CSN.'
 );
 
 -- Section Config for Course 3
@@ -345,7 +345,7 @@ INSERT INTO program_overview (program_id, intro_text) VALUES (
 INSERT INTO program_summary_cards (program_id, label, value, icon, sort_order) VALUES
   ('30000000-0000-0000-0000-000000000003', 'DURATION', '14 Weeks (3.5 Months)', 'clock', 1),
   ('30000000-0000-0000-0000-000000000003', 'ELIGIBILITY', 'Data Analysts & Engineers', 'users', 2),
-  ('30000000-0000-0000-0000-000000000003', 'MODE', 'Offline in Bengaluru', 'map-pin', 3),
+  ('30000000-0000-0000-0000-000000000003', 'MODE', 'Offline in CSN', 'map-pin', 3),
   ('30000000-0000-0000-0000-000000000003', 'CERTIFICATION', 'Data Architect Credential', 'award', 4),
   ('30000000-0000-0000-0000-000000000003', 'INTERNSHIP', 'Guaranteed Guild Placement', 'briefcase', 5),
   ('30000000-0000-0000-0000-000000000003', 'PLACEMENT', 'Data Engineering Career Track', 'trending-up', 6),

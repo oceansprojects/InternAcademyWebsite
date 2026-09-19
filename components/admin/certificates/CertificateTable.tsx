@@ -49,7 +49,7 @@ interface Props {
 }
 
 function formatDate(iso: string | null) {
-  if (!iso) return "—";
+  if (!iso) return "";
   return new Date(iso).toLocaleDateString("en-IN", {
     day: "2-digit",
     month: "short",
@@ -309,12 +309,12 @@ export default function CertificateTable({ initialData }: Props) {
         filter === "all"
           ? true
           : filter === "issued"
-          ? !!r.cert_id && !!r.cert_is_active && !!r.certificate_url
-          : filter === "pending"
-          ? !r.cert_id
-          : filter === "missing_url"
-          ? !!r.cert_id && !!r.cert_is_active && !r.certificate_url
-          : true;
+            ? !!r.cert_id && !!r.cert_is_active && !!r.certificate_url
+            : filter === "pending"
+              ? !r.cert_id
+              : filter === "missing_url"
+                ? !!r.cert_id && !!r.cert_is_active && !r.certificate_url
+                : true;
 
       return matchSearch && matchFilter;
     });
@@ -367,11 +367,10 @@ export default function CertificateTable({ initialData }: Props) {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold border transition-all ${
-                filter === f
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold border transition-all ${filter === f
                   ? "bg-[#004aad] text-white border-[#004aad]"
                   : "bg-white text-slate-600 border-slate-200 hover:border-[#004aad]/40"
-              }`}
+                }`}
             >
               {f === "all" ? "All" : f === "issued" ? "Issued" : f === "pending" ? "Pending" : "URL Missing"}
             </button>

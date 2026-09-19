@@ -297,7 +297,7 @@ export default function InstructorTable() {
                               <span className="text-xs">Profile</span>
                             </a>
                           ) : (
-                            <span className="text-gray-400 text-xs">—</span>
+                            <span className="text-gray-400 text-xs"></span>
                           )}
                         </td>
                         <td className="py-4 px-6">
@@ -311,11 +311,10 @@ export default function InstructorTable() {
                                   if (inst.id) await loadExpertise(inst.id);
                                 }
                               }}
-                              className={`p-2 rounded-lg transition-colors text-xs font-medium flex items-center gap-1 ${
-                                isSelected
+                              className={`p-2 rounded-lg transition-colors text-xs font-medium flex items-center gap-1 ${isSelected
                                   ? "bg-purple-100 text-purple-700"
                                   : "text-purple-600 hover:bg-purple-50"
-                              }`}
+                                }`}
                               title="Manage Skills / Expertise"
                             >
                               <Tag size={16} />

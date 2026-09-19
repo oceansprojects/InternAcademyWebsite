@@ -21,7 +21,7 @@ export const programs: Program[] = [
     price_selling: 34999,
     thumbnail_url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
     instructor_name: "Aravind Menon",
-    city: "Bengaluru",
+    city: "CSN",
     skills: ["Python", "Django", "FastAPI", "React", "PostgreSQL", "SQLAlchemy"],
     rating: 4.9,
     enrolled: 2400,
@@ -33,7 +33,7 @@ export const programs: Program[] = [
       { week: 13, topic: "Production Delivery & Guild Placement", description: "PostgreSQL, Redis, Docker, CI/CD, and cloud deployment." },
     ],
     faqs: [
-      { question: "Is this program fully offline?", answer: "Yes, classes run in-person at our Koramangala, Bengaluru center." },
+      { question: "Is this program fully offline?", answer: "Yes, classes run in-person at our Koramangala, CSN center." },
       { question: "Do I need prior coding experience?", answer: "No. We start from foundations and ramp up quickly." },
       { question: "Is a certificate provided?", answer: "Yes, a QR-verifiable certificate is issued on completion." },
     ],
@@ -51,7 +51,7 @@ export const programs: Program[] = [
     price_selling: 42999,
     thumbnail_url: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=800&q=80",
     instructor_name: "Dr. Sneha Rao",
-    city: "Bengaluru",
+    city: "CSN",
     skills: ["Python", "SQL", "Excel", "Pandas", "Power BI", "Tableau"],
     rating: 4.9,
     enrolled: 1860,
@@ -80,7 +80,7 @@ export const programs: Program[] = [
     price_selling: 39999,
     thumbnail_url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     instructor_name: "Dr. Sneha Rao & Aravind Menon",
-    city: "Bengaluru",
+    city: "CSN",
     skills: ["Python", "SQL", "Apache Spark", "Apache Kafka", "Snowflake", "dbt"],
     rating: 4.8,
     enrolled: 1320,
@@ -105,7 +105,7 @@ export const internships: Internship[] = [
     description:
       "Work with our product team to build delightful, accessible interfaces in React. You'll ship features to production and collaborate closely with designers.",
     sector: "Software",
-    location: "Bengaluru",
+    location: "CSN",
     mode: "Hybrid",
     stipend: 25000,
     duration_months: 6,
@@ -205,7 +205,7 @@ export const internships: Internship[] = [
     description:
       "Build scalable APIs and services in Node.js. Work on real systems handling production traffic with mentorship from senior engineers.",
     sector: "Software",
-    location: "Bengaluru",
+    location: "CSN",
     mode: "On-site",
     stipend: 28000,
     duration_months: 6,
@@ -297,7 +297,7 @@ export const resources: Resource[] = [
     slug: "how-to-land-your-first-tech-internship",
     title: "How to Land Your First Tech Internship in 2026",
     excerpt:
-      "A practical, step-by-step playbook to go from no experience to a paid internship offer — projects, outreach and interview prep that actually work.",
+      "A practical, step-by-step playbook to go from no experience to a paid internship offer  projects, outreach and interview prep that actually work.",
     content:
       "Landing your first internship feels impossible until you have a system. Start by picking one track and building two portfolio projects that solve real problems. Next, craft a one-page resume that leads with impact. Then run focused outreach: 10 quality applications a week beats 100 generic ones. Finally, prepare for interviews by practising out loud and reviewing fundamentals daily.\n\nThe students who succeed treat the search like a project with weekly goals. Track every application, follow up politely, and iterate on feedback. Consistency compounds.",
     category: "Career",
@@ -329,7 +329,7 @@ export const resources: Resource[] = [
     excerpt:
       "Three project ideas and a structure that turns raw analysis into a portfolio recruiters can't ignore.",
     content:
-      "A strong data portfolio tells a story: question, data, method, insight, impact. Choose datasets you care about, document your process clearly, and ship a clean dashboard. Recruiters skim — make your results obvious in the first ten seconds.\n\nInclude one end-to-end machine learning project, one dashboard, and one analysis with a business recommendation.",
+      "A strong data portfolio tells a story: question, data, method, insight, impact. Choose datasets you care about, document your process clearly, and ship a clean dashboard. Recruiters skim  make your results obvious in the first ten seconds.\n\nInclude one end-to-end machine learning project, one dashboard, and one analysis with a business recommendation.",
     category: "Data",
     author: "Dr. Sneha Rao",
     thumbnail_url: null,
@@ -342,9 +342,9 @@ export const resources: Resource[] = [
     slug: "offline-vs-online-learning-what-actually-works",
     title: "Offline vs Online Learning: What Actually Works",
     excerpt:
-      "Completion rates, accountability and outcomes — an honest look at why offline cohorts still win for career switchers.",
+      "Completion rates, accountability and outcomes  an honest look at why offline cohorts still win for career switchers.",
     content:
-      "Online courses have a completion problem. Offline cohorts solve it with accountability, peer energy and direct mentorship. The data is clear: students in structured, in-person programs finish more, build more and get placed faster.\n\nThe magic is in the environment — showing up, building with peers, and getting immediate feedback.",
+      "Online courses have a completion problem. Offline cohorts solve it with accountability, peer energy and direct mentorship. The data is clear: students in structured, in-person programs finish more, build more and get placed faster.\n\nThe magic is in the environment  showing up, building with peers, and getting immediate feedback.",
     category: "Career",
     author: "Intern Academy Team",
     thumbnail_url: null,

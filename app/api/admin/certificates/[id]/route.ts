@@ -6,7 +6,7 @@ import {
   deactivateCertificate,
 } from "@/services/certificate.service";
 
-/** GET /api/admin/certificates/:enrollmentId — single record */
+/** GET /api/admin/certificates/:enrollmentId  single record */
 export async function GET(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -33,7 +33,7 @@ export async function GET(
   }
 }
 
-/** PATCH /api/admin/certificates/:enrollmentId — upsert certificate URL */
+/** PATCH /api/admin/certificates/:enrollmentId  upsert certificate URL */
 export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -88,7 +88,7 @@ export async function PATCH(
   }
 }
 
-/** DELETE /api/admin/certificates/:enrollmentId — deactivate certificate */
+/** DELETE /api/admin/certificates/:enrollmentId  deactivate certificate */
 export async function DELETE(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }

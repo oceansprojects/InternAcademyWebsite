@@ -16,7 +16,7 @@ type ProgramFormProps = {
 export default function ProgramForm({
   onSuccess,
   editingProgram,
-}: ProgramFormProps)  {
+}: ProgramFormProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -59,8 +59,8 @@ export default function ProgramForm({
       ...prev,
       [name]:
         name === "duration_weeks" ||
-        name === "base_price" ||
-        name === "discounted_price"
+          name === "base_price" ||
+          name === "discounted_price"
           ? Number(value)
           : value,
     }));
@@ -131,8 +131,8 @@ export default function ProgramForm({
             {editingProgram ? "Edit Program" : "Create Program"}
           </h2>
           <p className="text-sm text-gray-500 mt-1">
-            {editingProgram 
-              ? "Update the program details below" 
+            {editingProgram
+              ? "Update the program details below"
               : "Fill in the details below to create a new course"}
           </p>
         </div>
@@ -249,7 +249,7 @@ export default function ProgramForm({
               name="location"
               value={formData.location}
               onChange={handleChange}
-              placeholder="Bengaluru"
+              placeholder="CSN"
               className="border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             />
           </div>

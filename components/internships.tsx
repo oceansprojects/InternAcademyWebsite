@@ -14,7 +14,7 @@ const internships: Internship[] = [
   {
     role: "Frontend Developer Intern",
     company: "TechNova",
-    location: "Bengaluru",
+    location: "CSN",
     mode: "Hybrid",
     stipend: "25,000/mo",
     sector: "Software",

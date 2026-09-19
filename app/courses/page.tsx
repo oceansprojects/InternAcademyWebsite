@@ -147,7 +147,7 @@ export default function CoursesPage() {
                   Explore Programs
                 </h1>
                 <p className="mt-3 text-slate-500 max-w-xl text-sm ml-2 leading-relaxed font-medium">
-                  Select a training cohort, master job-ready skills offline in Bengaluru, and jumpstart your career with guaranteed internships.
+                  Select a training cohort, master job-ready skills offline in CSN, and jumpstart your career with guaranteed internships.
                 </p>
               </div>
 

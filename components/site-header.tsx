@@ -9,6 +9,7 @@ import { useSession, signOut } from "next-auth/react"
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Courses", href: "/courses" },
+  { label: "Jobs", href: "/jobs" },
   { label: "Blog", href: "/blog" },
 ]
 
@@ -17,7 +18,6 @@ export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
   const { data: session } = useSession()
-  const isHome = pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,11 +34,7 @@ export default function SiteHeader() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
-        isHome
-          ? scrolled
-            ? "bg-[#004aad]/95 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.25)] text-white"
-            : "bg-[#004aad] shadow-[0_4px_20px_rgba(0,0,0,0.15)] text-white"
-          : scrolled
+        scrolled
           ? "bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-md text-gray-900"
           : "bg-white border-b border-gray-100 shadow-sm text-gray-900"
       }`}
@@ -62,13 +58,9 @@ export default function SiteHeader() {
               style={{ lineHeight: 1.1 }}
             >
               <span className="text-[#00aeef]">INTERN</span>{" "}
-              <span className={isHome ? "text-white" : "text-[#003087]"}>ACADEMY</span>
+              <span className="text-[#003087]">ACADEMY</span>
             </span>
-            <span
-              className={`text-[0.48rem] sm:text-[0.52rem] font-bold tracking-[0.18em] uppercase mt-0.5 border-t pt-0.5 ${
-                isHome ? "text-white/70 border-white/30" : "text-[#003087]/70 border-[#003087]/30"
-              }`}
-            >
+            <span className="text-[0.48rem] sm:text-[0.52rem] font-bold tracking-[0.18em] uppercase mt-0.5 border-t border-[#003087]/30 pt-0.5 text-[#003087]/70">
               A Launchpad to Real-World Skills
             </span>
           </div>
@@ -87,11 +79,7 @@ export default function SiteHeader() {
                   after:absolute after:bottom-0 after:left-0 after:h-[3px] after:w-full after:rounded-full after:content-['']
                   after:transition-transform after:duration-300 after:origin-left
                   ${
-                    isHome
-                      ? isActive
-                        ? "text-white after:scale-x-100 after:bg-[#00d2fd]"
-                        : "text-white/70 hover:text-white after:scale-x-0 hover:after:scale-x-100 after:bg-[#00d2fd]"
-                      : isActive
+                    isActive
                       ? "text-[#004aad] after:scale-x-100 after:bg-[#004aad]"
                       : "text-gray-600 hover:text-gray-900 after:scale-x-0 hover:after:scale-x-100 after:bg-[#004aad]"
                   }`}
@@ -108,34 +96,22 @@ export default function SiteHeader() {
             <>
               <Link
                 href="/login"
-                className={`flex items-center gap-2 rounded-full border-2 px-6 py-2 text-sm font-semibold transition-all duration-300 ${
-                  isHome
-                    ? "border-white/50 text-white hover:border-[#00d2fd] hover:text-[#00d2fd]"
-                    : "border-gray-200 text-gray-700 hover:border-[#004aad] hover:text-[#004aad]"
-                }`}
+                className="flex items-center gap-2 rounded-full border-2 border-gray-200 px-5 py-2 text-sm font-semibold text-gray-700 transition-all duration-300 hover:border-[#004aad] hover:text-[#004aad]"
               >
-                Sign In
+                For Students
                 <ArrowRight className="size-4" />
               </Link>
 
               <Link
-                href="/signup"
-                className={`flex items-center justify-center rounded-full px-7 py-2 text-sm font-semibold transition-all duration-300 shadow-sm hover:scale-[1.02] active:scale-95 ${
-                  isHome
-                    ? "bg-white text-[#004aad] hover:bg-[#00d2fd] hover:text-slate-900"
-                    : "bg-[#004aad] text-white hover:bg-[#003c8c]"
-                }`}
+                href="/company/login"
+                className="flex items-center gap-1.5 rounded-full border-2 border-slate-200 px-5 py-2 text-sm font-semibold text-slate-600 transition-all duration-300 hover:border-[#004aad] hover:text-[#004aad]"
               >
-                Sign Up
+                For Companies
               </Link>
             </>
           ) : (
             <div className="flex items-center gap-3">
-              <span
-                className={`text-sm font-semibold ${
-                  isHome ? "text-white" : "text-gray-700"
-                }`}
-              >
+              <span className="text-sm font-semibold text-gray-700">
                 Hi, {session.user?.name}
               </span>
 
@@ -143,11 +119,11 @@ export default function SiteHeader() {
                 href={
                   session.user.role === "admin" || session.user.role === "super_admin"
                     ? "/admin"
+                    : session.user.role === "company"
+                    ? "/company/dashboard"
                     : "/student/dashboard"
                 }
-                className={`rounded-full p-2 ${
-                  isHome ? "hover:bg-white/10 text-white" : "hover:bg-gray-100 text-gray-700"
-                }`}
+                className="rounded-full p-2 text-gray-700 hover:bg-gray-100"
                 title="Dashboard"
               >
                 <LayoutDashboard size={20} />
@@ -159,9 +135,7 @@ export default function SiteHeader() {
                     callbackUrl: "/",
                   })
                 }
-                className={`rounded-full p-2 ${
-                  isHome ? "hover:bg-white/10 text-white" : "hover:bg-gray-100 text-gray-700"
-                }`}
+                className="rounded-full p-2 text-gray-700 hover:bg-gray-100"
                 title="Sign Out"
               >
                 <LogOut size={20} />
@@ -174,11 +148,7 @@ export default function SiteHeader() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className={`flex size-10 items-center justify-center rounded-full border md:hidden transition-all ${
-            isHome
-              ? "border-white/30 text-white hover:bg-white/10"
-              : "border-gray-200 text-gray-700 hover:border-gray-300"
-          }`}
+          className="flex size-10 items-center justify-center rounded-full border border-gray-200 text-gray-700 transition-all hover:border-gray-300 md:hidden"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
@@ -188,13 +158,7 @@ export default function SiteHeader() {
 
       {/* Mobile Menu */}
       {open && (
-        <div
-          className={`border-t px-6 py-4 md:hidden animate-in fade-in slide-in-from-top-1 duration-200 ${
-            isHome
-              ? "border-white/15 bg-[#004aad] text-white shadow-xl"
-              : "border-gray-100 bg-white text-gray-900 shadow-lg"
-          }`}
-        >
+        <div className="border-t border-gray-100 bg-white px-6 py-4 text-gray-900 shadow-lg md:hidden animate-in fade-in slide-in-from-top-1 duration-200">
           <nav className="flex flex-col gap-2" aria-label="Mobile">
             {navLinks.map((link) => {
               const isActive = pathname === link.href
@@ -205,11 +169,7 @@ export default function SiteHeader() {
                   href={link.href}
                   onClick={() => setOpen(false)}
                   className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                    isHome
-                      ? isActive
-                        ? "text-[#00d2fd] bg-white/10 font-bold"
-                        : "text-white/80 hover:text-white hover:bg-white/10"
-                      : isActive
+                    isActive
                       ? "text-[#004aad] bg-gray-50 font-bold"
                       : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
                   }`}
@@ -219,31 +179,23 @@ export default function SiteHeader() {
               )
             })}
 
-            <div className="mt-3 flex flex-col gap-2 border-t pt-3" style={{ borderColor: isHome ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)" }}>
+            <div className="mt-3 flex flex-col gap-2 border-t border-gray-100 pt-3">
               {!session ? (
                 <>
                   <Link
                     href="/login"
                     onClick={() => setOpen(false)}
-                    className={`rounded-full border-2 px-6 py-2.5 text-center text-sm font-semibold transition-colors ${
-                      isHome
-                        ? "border-white/50 text-white hover:bg-white/10"
-                        : "border-gray-200 text-gray-700 hover:bg-gray-50"
-                    }`}
+                    className="rounded-full border-2 border-gray-200 px-6 py-2.5 text-center text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50"
                   >
-                    Sign In →
+                    For Students →
                   </Link>
 
                   <Link
-                    href="/signup"
+                    href="/company/login"
                     onClick={() => setOpen(false)}
-                    className={`rounded-full px-6 py-2.5 text-center text-sm font-semibold transition-colors ${
-                      isHome
-                        ? "bg-white text-[#004aad] hover:bg-[#00d2fd]"
-                        : "bg-[#004aad] text-white hover:bg-[#003c8c]"
-                    }`}
+                    className="rounded-full border-2 border-slate-200 px-6 py-2.5 text-center text-sm font-semibold text-slate-600 transition-colors hover:bg-slate-50"
                   >
-                    Sign Up
+                    For Companies →
                   </Link>
                 </>
               ) : (
@@ -256,6 +208,8 @@ export default function SiteHeader() {
                     href={
                       session.user.role === "admin" || session.user.role === "super_admin"
                         ? "/admin"
+                        : session.user.role === "company"
+                        ? "/company/dashboard"
                         : "/student/dashboard"
                     }
                     onClick={() => setOpen(false)}
@@ -272,11 +226,7 @@ export default function SiteHeader() {
                         callbackUrl: "/",
                       })
                     }}
-                    className={`flex items-center justify-center gap-2 rounded-full border px-6 py-2 text-center text-xs font-semibold ${
-                      isHome
-                        ? "border-white/30 text-white hover:bg-white/10"
-                        : "border-gray-200 text-gray-700 hover:bg-gray-50"
-                    }`}
+                    className="flex items-center justify-center gap-2 rounded-full border border-gray-200 px-6 py-2 text-center text-xs font-semibold text-gray-700 hover:bg-gray-50"
                   >
                     <LogOut size={16} />
                     Logout

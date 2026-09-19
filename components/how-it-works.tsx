@@ -194,7 +194,7 @@ export function HowItWorks() {
         ref={interactiveBodyRef}
         className="hidden lg:flex w-full h-screen max-h-screen border-t border-slate-100"
       >
-        {/* LEFT — scrollable container */}
+        {/* LEFT  scrollable container */}
         <div
           ref={leftRef}
           onScroll={handleScroll}
@@ -209,9 +209,9 @@ export function HowItWorks() {
                 animate={{
                   background:
                     activeStep === 0 ? "radial-gradient(circle at 48% 44%, rgba(14,165,233,0.09) 0%, transparent 62%)"
-                    : activeStep === 1 ? "radial-gradient(circle at 52% 50%, rgba(168,85,247,0.09) 0%, transparent 62%)"
-                    : activeStep === 2 ? "radial-gradient(circle at 46% 54%, rgba(22,163,74,0.09) 0%, transparent 62%)"
-                    : "radial-gradient(circle at 50% 44%, rgba(217,119,6,0.09) 0%, transparent 62%)"
+                      : activeStep === 1 ? "radial-gradient(circle at 52% 50%, rgba(168,85,247,0.09) 0%, transparent 62%)"
+                        : activeStep === 2 ? "radial-gradient(circle at 46% 54%, rgba(22,163,74,0.09) 0%, transparent 62%)"
+                          : "radial-gradient(circle at 50% 44%, rgba(217,119,6,0.09) 0%, transparent 62%)"
                 }}
                 transition={{ duration: 0.65 }}
               />
@@ -255,17 +255,17 @@ export function HowItWorks() {
                       idx === 0
                         ? [0, 0.22, 0.28]
                         : idx === 1
-                        ? [0.2, 0.28, 0.55, 0.62]
-                        : idx === 2
-                        ? [0.5, 0.62, 0.88, 0.95]
-                        : [0.8, 0.95, 1.0],
+                          ? [0.2, 0.28, 0.55, 0.62]
+                          : idx === 2
+                            ? [0.5, 0.62, 0.88, 0.95]
+                            : [0.8, 0.95, 1.0],
                       idx === 0
                         ? [1, 1, 0]
                         : idx === 1
-                        ? [0, 1, 1, 0]
-                        : idx === 2
-                        ? [0, 1, 1, 0]
-                        : [0, 1, 1]
+                          ? [0, 1, 1, 0]
+                          : idx === 2
+                            ? [0, 1, 1, 0]
+                            : [0, 1, 1]
                     )
 
                     const translateY = useTransform(
@@ -273,17 +273,17 @@ export function HowItWorks() {
                       idx === 0
                         ? [0, 0.22, 0.28]
                         : idx === 1
-                        ? [0.2, 0.28, 0.55, 0.62]
-                        : idx === 2
-                        ? [0.5, 0.62, 0.88, 0.95]
-                        : [0.8, 0.95, 1.0],
+                          ? [0.2, 0.28, 0.55, 0.62]
+                          : idx === 2
+                            ? [0.5, 0.62, 0.88, 0.95]
+                            : [0.8, 0.95, 1.0],
                       idx === 0
                         ? [0, 0, -40]
                         : idx === 1
-                        ? [40, 0, 0, -40]
-                        : idx === 2
-                        ? [40, 0, 0, -40]
-                        : [40, 0, 0]
+                          ? [40, 0, 0, -40]
+                          : idx === 2
+                            ? [40, 0, 0, -40]
+                            : [40, 0, 0]
                     )
 
                     return (
@@ -330,7 +330,7 @@ export function HowItWorks() {
           </div>
         </div>
 
-        {/* RIGHT — sticky timeline description panel */}
+        {/* RIGHT  sticky timeline description panel */}
         <div className="w-[45%] h-screen sticky top-0 flex flex-col justify-center px-8 xl:px-12 border-l border-slate-100 bg-white overflow-hidden">
           <div className="mb-8 relative z-10">
             <motion.span

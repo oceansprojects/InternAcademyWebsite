@@ -32,7 +32,7 @@ function parseOverview(raw: string | null | undefined): OverviewData {
         : ["", "", "", ""],
     };
   } catch {
-    // Legacy plain-text fallback — put everything in bold_intro
+    // Legacy plain-text fallback  put everything in bold_intro
     return { ...EMPTY, bold_intro: raw };
   }
 }
@@ -101,17 +101,17 @@ export default function OverviewEditor({ program }: Props) {
   }
 
   async function handleSave() {
-  try {
-    setSaving(true);
-    await updateOverview(program.id, JSON.stringify(data));
-    toast.success("Overview saved successfully!");
-  } catch (err) {
-    console.error(err);
-    toast.error("Failed to save overview.");
-  } finally {
-    setSaving(false);
+    try {
+      setSaving(true);
+      await updateOverview(program.id, JSON.stringify(data));
+      toast.success("Overview saved successfully!");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to save overview.");
+    } finally {
+      setSaving(false);
+    }
   }
-}
 
   if (loading) return <p>Loading...</p>;
 
@@ -179,7 +179,7 @@ export default function OverviewEditor({ program }: Props) {
       {/* ── Part 3: "What you will master" bullet points ─────────────── */}
       <div className="mb-6">
         <label className="block text-sm font-semibold text-gray-700 mb-1">
-          ✨ What You Will Master — Bullet Points
+          ✨ What You Will Master  Bullet Points
         </label>
         <p className="text-xs text-gray-400 mb-3">
           Displayed in a 2-column grid inside the highlighted box at the bottom.

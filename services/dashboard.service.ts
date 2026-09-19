@@ -53,13 +53,47 @@ export async function getStudentDashboard(userId: string) {
     console.error("Error fetching student certificates:", err);
   }
 
+  // Job & Internship Applications
+  let jobApplications: any[] = [];
+  try {
+    jobApplications = await sql`
+      SELECT
+        a.id,
+        a.user_id,
+        a.opportunity_id,
+        a.status,
+        a.resume_url,
+        a.cover_letter,
+        a.applied_at,
+        a.updated_at,
+        o.title AS opportunity_title,
+        o.type AS opportunity_type,
+        o.work_mode,
+        o.city,
+        o.state,
+        o.stipend_salary,
+        c.id AS company_id,
+        c.name AS company_name,
+        c.logo_url AS company_logo_url
+      FROM internship_applications a
+      JOIN internship_opportunities o ON o.id = a.opportunity_id
+      JOIN companies c ON c.id = o.company_id
+      WHERE a.user_id = ${userId}
+      ORDER BY a.applied_at DESC
+    `;
+  } catch (err) {
+    console.error("Error fetching student job applications:", err);
+  }
+
   return {
     profile,
     enrollments,
     activePrograms,
     certificates,
+    jobApplications,
     stats: {
       applications: enrollments.length,
+      jobApplicationsCount: jobApplications.length,
       activePrograms: activePrograms.length,
       certificates: certificates.length,
       hoursLearned: enrollments.reduce((acc: number, curr: any) => acc + (curr.duration_weeks || 0) * 10, 0),

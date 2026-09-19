@@ -6,6 +6,24 @@ import bcrypt from "bcryptjs";
 import { authConfig } from "@/auth.config";
 import { getUserByEmail } from "@/services/auth.service";
 
+// Ensure AUTH_URL and NEXTAUTH_URL include /api/auth so Auth.js v5 never resolves basePath to "/"
+if (process.env.AUTH_URL) {
+  try {
+    const u = new URL(process.env.AUTH_URL);
+    if (u.pathname === "/" || !u.pathname) {
+      process.env.AUTH_URL = `${u.origin}/api/auth`;
+    }
+  } catch {}
+}
+if (process.env.NEXTAUTH_URL) {
+  try {
+    const u = new URL(process.env.NEXTAUTH_URL);
+    if (u.pathname === "/" || !u.pathname) {
+      process.env.NEXTAUTH_URL = `${u.origin}/api/auth`;
+    }
+  } catch {}
+}
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
 
