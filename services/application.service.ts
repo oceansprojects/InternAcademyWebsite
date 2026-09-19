@@ -108,7 +108,83 @@ export async function getApplicationsByUser(userId: string) {
   return rows;
 }
 
-export const getStudentApplications = getApplicationsByUser;
+export async function getStudentApplications(userId: string) {
+  const rows = await sql`
+    SELECT
+      e.*,
+      p.title,
+      p.slug,
+      p.category,
+      p.duration_weeks,
+      p.batch_mode,
+      p.discounted_price,
+      p.base_price,
+      p.cohort_start,
+      p.card_image_url
+    FROM enrollments e
+    INNER JOIN programs p
+      ON e.program_id = p.id
+    WHERE e.user_id = ${userId}
+    ORDER BY e.enrolled_at DESC
+  `;
+  return rows;
+}
+
+export async function getStudentApplicationById(
+  userId: string,
+  applicationId: string
+) {
+  const rows = await sql`
+    SELECT
+      e.*,
+      p.title,
+      p.slug,
+      p.category,
+      p.duration_weeks,
+      p.batch_mode,
+      p.discounted_price,
+      p.base_price,
+      p.cohort_start,
+      p.card_image_url
+    FROM enrollments e
+    INNER JOIN programs p
+      ON e.program_id = p.id
+    WHERE e.user_id = ${userId} AND e.id = ${applicationId}
+    LIMIT 1
+  `;
+
+  if (rows[0]) {
+    return rows[0];
+  }
+
+  // Fallback check for internship applications
+  const jobRows = await sql`
+    SELECT
+      a.id,
+      a.user_id,
+      a.opportunity_id,
+      a.status,
+      a.resume_url,
+      a.cover_letter,
+      a.applied_at AS enrolled_at,
+      a.updated_at,
+      o.title,
+      o.type AS category,
+      0 AS duration_weeks,
+      o.work_mode AS batch_mode,
+      0 AS discounted_price,
+      0 AS base_price,
+      c.name AS company_name,
+      c.logo_url AS company_logo_url
+    FROM internship_applications a
+    JOIN internship_opportunities o ON o.id = a.opportunity_id
+    JOIN companies c ON c.id = o.company_id
+    WHERE a.user_id = ${userId} AND a.id = ${applicationId}
+    LIMIT 1
+  `;
+
+  return jobRows[0] ?? null;
+}
 
 export async function getFullApplicantProfileForCompany(
   applicantUserId: string,
